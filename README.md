@@ -9,11 +9,14 @@ These instructions will cover how to start a container both in Docker and within
 ### Prerequisites
 
 In order to run this container you'll need docker installed.
-The container also supports running as part of a [Kubernetes](http://kubernetes.io/) cluster with discovery of other nodes.
 
 * [Windows](https://docs.docker.com/windows/started)
 * [OS X](https://docs.docker.com/mac/started/)
 * [Linux](https://docs.docker.com/linux/started/)
+
+Optionally:
+
+* A [Kubernetes](http://kubernetes.io/) cluster to enable Kubernetes api discovery of other nodes.
 
 ### Usage
 
@@ -22,13 +25,13 @@ The container also supports running as part of a [Kubernetes](http://kubernetes.
 The variables and there defaults are shown below.
 By default, the container does not depend on [Kubernetes](http://kubernetes.io/). 
 
-`CLUSTER_NAME=${CLUSTER_NAME:-elasticsearch-default}`
-`NODE_MASTER=${NODE_MASTER:-true}`
-`NODE_DATA=${NODE_DATA:-true}`
-`HTTP_ENABLE=${HTTP_ENABLE:-true}`
-`MULTICAST=${MULTICAST:-false}`
-`NAMESPACE=${NAMESPACE:-default}`
-`DISCOVERY_SERVICE=${DISCOVERY_SERVICE:-elasticsearch-discovery}`
+* `CLUSTER_NAME=${CLUSTER_NAME:-elasticsearch-default}`
+* `NODE_MASTER=${NODE_MASTER:-true}`
+* `NODE_DATA=${NODE_DATA:-true}`
+* `HTTP_ENABLE=${HTTP_ENABLE:-true}`
+* `MULTICAST=${MULTICAST:-false}`
+* `NAMESPACE=${NAMESPACE:-default}`
+* `DISCOVERY_SERVICE=${DISCOVERY_SERVICE:-elasticsearch-discovery}`
 
 ### Ports
 
@@ -40,7 +43,7 @@ This container exposes:
 The example below will start a single Elasticsearch instance...
 
 ```
-
+docker run --name es_thing --rm=true -e 'PROXY_SERVICE_HOST=google.com' -e 'PROXY_SERVICE_PORT=80' -p 9200:9200 -p 9300:9300 
 ```
 
 ## Contributing
