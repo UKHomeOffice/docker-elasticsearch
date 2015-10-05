@@ -22,7 +22,7 @@ Optionally:
 
 ### Enviroment Variables
 
-The variables and there defaults are shown below.
+The variables and the defaults are shown below.
 By default, the container does not depend on [Kubernetes](http://kubernetes.io/). 
 
 * `CLUSTER_NAME=${CLUSTER_NAME:-elasticsearch-default}`
@@ -43,7 +43,7 @@ This container exposes:
 The example below will start a single Elasticsearch instance...
 
 ```
-docker run --name es_thing --rm=true -e 'PROXY_SERVICE_HOST=google.com' -e 'PROXY_SERVICE_PORT=80' -p 9200:9200 -p 9300:9300 
+docker run --name es_thing --rm=true -e 'PROXY_SERVICE_HOST=google.com' -e 'PROXY_SERVICE_PORT=80' -p 9200:9200 -p 9300:9300 quay.io/ukhomeofficedigital/elasticsearch:v0.1.0
 ```
 
 ## Contributing
