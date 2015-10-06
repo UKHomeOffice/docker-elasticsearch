@@ -26,9 +26,9 @@ function get() {
 
 if docker ps -a | grep es_thing ; then
     if docker ps | grep es_thing ; then
-        docker stop es_thing
+        sudo docker stop es_thing
     fi
-    docker rm es_thing
+    sudo docker rm es_thing
 fi
 
 docker build -t es .
@@ -50,5 +50,5 @@ docker logs es_thing
 
 get http://${DOCKER_HOST_NAME}:9200/_cluster/health?pretty
 
-docker stop es_thing
-docker rm es_thing
+sudo docker stop es_thing
+sudo docker rm es_thing
