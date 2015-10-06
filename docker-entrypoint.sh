@@ -12,13 +12,12 @@ export NODE_MASTER=${NODE_MASTER:-true}
 export NODE_DATA=${NODE_DATA:-true}
 export HTTP_ENABLE=${HTTP_ENABLE:-true}
 export MULTICAST=${MULTICAST:-false}
+export CLOUD_ENABLE=${CLOUD_ENABLE:-false}
 
 export NAMESPACE=${NAMESPACE:-default}
 export DISCOVERY_SERVICE=${DISCOVERY_SERVICE:-elasticsearch-discovery}
 
 if [ "$1" = 'elasticsearch' ]; then
-	# Change the ownership of ${ES_INSTALL}/data to elasticsearch
-	chown -R elasticsearch:elasticsearch /data
 	exec elasticsearch "$@"
 fi
 

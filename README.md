@@ -34,6 +34,11 @@ By default, the container does not depend on [Kubernetes](http://kubernetes.io/)
 * `MULTICAST=${MULTICAST:-false}`
 * `NAMESPACE=${NAMESPACE:-default}`
 * `DISCOVERY_SERVICE=${DISCOVERY_SERVICE:-elasticsearch-discovery}`
+* `KUBECONFIG` path to a standard Kubernetes config file to use for authentication configuration  
+   (usefull if service accounts are not used).
+* `CLOUD_ENABLE=${CLOUD_ENABLE:-false}` will enable the Kubernetes API discovery of peers.
+* `KUBERNETES_TRUST_CERT` when set to true will always trust the Kubernetes API. See [Kubernetes API Trust](examples/kubernetes.md#kubernetes-api-trust)
+
 
 ### Ports
 
@@ -42,11 +47,14 @@ This container exposes:
 * `9200` - The http [Elasticsearch](https://www.elastic.co/products/elasticsearch) API
 * `9300` - The [Elasticsearch](https://www.elastic.co/products/elasticsearch) transport protocol
 
-The example below will start a single Elasticsearch instance...
+The example below will start a single Elasticsearch instance.
 
 ```
-docker run --name es_thing --rm=true -e 'PROXY_SERVICE_HOST=google.com' -e 'PROXY_SERVICE_PORT=80' -p 9200:9200 -p 9300:9300 quay.io/ukhomeofficedigital/elasticsearch:v0.1.0
+docker run --name es_thing --rm=true -p 9200:9200 -p 9300:9300 quay.io/ukhomeofficedigital/elasticsearch:v0.1.0 
 ```
+
+To use with [Kubernetes](http://kubernetes.io/) see the [kubernetes examples](examples/kubernetes.md).
+
 
 ## Contributing
 

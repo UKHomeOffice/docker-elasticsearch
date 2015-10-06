@@ -12,13 +12,13 @@ ENV PATH ${ES_INSTALL}/bin:$PATH
 
 RUN set -ex \
 	&& for path in \
-		/data \
-		${ES_INSTALL}/logs \
+		/data/es \
+		/data/log \
 		${ES_INSTALL}/config \
 		${ES_INSTALL}/config/scripts \
 	; do \
 		mkdir -p "$path"; \
-		chown -R elasticsearch:elasticsearch "$path"; \
+		# chown -R elasticsearch:elasticsearch "$path"; \
 	done
 
 # Override elasticsearch.yml config, otherwise plug-in install will fail
@@ -27,14 +27,13 @@ ADD do_not_use.yml ${ES_INSTALL}/config/elasticsearch.yml
 # Install Elasticsearch plug-ins
 RUN ${ES_INSTALL}/bin/plugin -i io.fabric8/elasticsearch-cloud-kubernetes/1.3.0 --verbose
 
-# Override elasticsearch.yml config, otherwise plug-in install will fail
-ADD elasticsearch.yml ${ES_INSTALL}/config/elasticsearch.yml
+# Add logging and real config
+ADD config/* ${ES_INSTALL}/config/
 
 VOLUME /data
 
 COPY docker-entrypoint.sh /
 
-USER elasticsearch
 ENTRYPOINT ["/docker-entrypoint.sh"]
 
 EXPOSE 9200 9300
