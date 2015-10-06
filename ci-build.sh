@@ -1,0 +1,54 @@
+#!/usr/bin/env bash
+
+set -e
+
+function get() {
+
+    url=$1
+    max_retries=10
+    retries=0
+    while true ; do
+        if ! wget -O- $url ; then
+            retries=$((retries + 1))
+            if [ $retries -eq $max_retries ]; then
+                return 1
+            else
+                echo "Retrying, $retries out of $max_retries..."
+                sleep 5
+            fi
+        else
+            return 0
+        fi
+    done
+    echo
+    return 1
+}
+
+if docker ps -a | grep es_thing ; then
+    if docker ps | grep es_thing ; then
+        docker stop es_thing
+    fi
+    docker rm es_thing
+fi
+
+docker build -t es .
+docker run --name es_thing -d -p 9200:9200 -p 9301:9300  es
+
+# TODO: fix this with a polling thing...
+sleep 5;
+
+# Cope with local builds with docker machine...
+if [ "${DOCKER_MACHINE_NAME}" == "" ]; then
+    DOCKER_HOST_NAME=localhost
+else
+    DOCKER_HOST_NAME=$(docker-machine ip ${DOCKER_MACHINE_NAME})
+fi
+
+get http://${DOCKER_HOST_NAME}:9200/
+
+docker logs es_thing
+
+get http://${DOCKER_HOST_NAME}:9200/_cluster/health?pretty
+
+docker stop es_thing
+docker rm es_thing
