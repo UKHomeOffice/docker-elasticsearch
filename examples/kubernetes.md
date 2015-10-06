@@ -20,7 +20,7 @@ See [Kubernetes API trust](#kubernetes-api-trust) for more information on this.
 
 ## Deploy
 
-See files [./](./)
+See [files ./](./)
 
 The instructions below will deploy 3 data pods and a single client and master.
 The data will be saved to separate pods which hopefully will use different nodes.
