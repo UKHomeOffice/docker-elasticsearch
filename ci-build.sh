@@ -49,6 +49,3 @@ get http://${DOCKER_HOST_NAME}:9200/
 docker logs es_thing
 
 get http://${DOCKER_HOST_NAME}:9200/_cluster/health?pretty
-
-sudo docker stop es_thing
-sudo docker rm es_thing
