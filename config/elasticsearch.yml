@@ -7,13 +7,14 @@ node:
 
 path:
   data: /data
-  logs: /dev/stdout
+  logs: /data/log
   plugins: ${ES_INSTALL}/plugins
   work: ${ES_INSTALL}/work
 
 bootstrap.mlockall: true
 
 http.enabled: ${HTTP_ENABLE}
+cloud.enabled: ${CLOUD_ENABLE}
 
 cloud:
   k8s:

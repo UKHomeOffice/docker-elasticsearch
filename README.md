@@ -40,10 +40,10 @@ This container exposes:
 * `9200` - The http [Elasticsearch](https://www.elastic.co/products/elasticsearch) API
 * `9300` - The [Elasticsearch](https://www.elastic.co/products/elasticsearch) transport protocol
 
-The example below will start a single Elasticsearch instance...
+The example below will start a single Elasticsearch instance. Note, at this time the plugin will expect kubernetes to be enabled...
 
 ```
-docker run --name es_thing --rm=true -e 'PROXY_SERVICE_HOST=google.com' -e 'PROXY_SERVICE_PORT=80' -p 9200:9200 -p 9300:9300 
+docker run --name es_thing --rm=true -p 9200:9200 -p 9300:9300 quay.io/ukhomeofficedigital/elasticsearch:v0.1.0 
 ```
 
 ## Contributing
