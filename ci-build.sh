@@ -40,6 +40,8 @@ sleep 5;
 # Cope with local builds with docker machine...
 if [ "${DOCKER_MACHINE_NAME}" == "" ]; then
     DOCKER_HOST_NAME=localhost
+    # On travis... need to do this for it to work!
+    service docker restart ; sleep 10
 else
     DOCKER_HOST_NAME=$(docker-machine ip ${DOCKER_MACHINE_NAME})
 fi
