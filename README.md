@@ -1,5 +1,7 @@
 # Docker Elasticsearch
 
+[![Build Status](https://travis-ci.org/UKHomeOffice/docker-elasticsearch.svg?branch=master)](https://travis-ci.org/UKHomeOffice/docker-elasticsearch)
+
 Docker container for starting an [Elasticsearch](https://www.elastic.co/products/elasticsearch) cluster with [Kubernetes](http://kubernetes.io/) auto discovery support.
 
 ## Getting Started
