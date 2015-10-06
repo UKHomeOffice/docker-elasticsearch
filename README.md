@@ -22,7 +22,7 @@ Optionally:
 
 ### Enviroment Variables
 
-The variables and there defaults are shown below.
+The variables and the defaults are shown below.
 By default, the container does not depend on [Kubernetes](http://kubernetes.io/). 
 
 * `CLUSTER_NAME=${CLUSTER_NAME:-elasticsearch-default}`
