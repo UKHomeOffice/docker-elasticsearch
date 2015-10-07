@@ -4,4 +4,4 @@ services:
   - docker
 
 script:
-  - docker build -t quay.io/ukhomeofficedigital/elasticsearch:travis .
+  - ./ci-build.sh
