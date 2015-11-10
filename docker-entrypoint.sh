@@ -13,6 +13,8 @@ export NODE_DATA=${NODE_DATA:-true}
 export HTTP_ENABLE=${HTTP_ENABLE:-true}
 export MULTICAST=${MULTICAST:-false}
 export CLOUD_ENABLE=${CLOUD_ENABLE:-false}
+export NODE_NAME=${NODE_NAME:-$(echo $HOSTNAME)}
+export INDEX_STORE_TYPE=${INDEX_STORE_TYPE:-default}
 
 export NAMESPACE=${NAMESPACE:-default}
 export DISCOVERY_SERVICE=${DISCOVERY_SERVICE:-elasticsearch-discovery}

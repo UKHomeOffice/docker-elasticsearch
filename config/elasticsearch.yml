@@ -2,6 +2,7 @@ cluster:
   name: ${CLUSTER_NAME}
 
 node:
+  name: ${NODE_NAME}
   master: ${NODE_MASTER}
   data: ${NODE_DATA}
 
@@ -10,6 +11,8 @@ path:
   logs: /data/log
   plugins: ${ES_INSTALL}/plugins
   work: ${ES_INSTALL}/work
+
+index.store.type: ${INDEX_STORE_TYPE}
 
 bootstrap.mlockall: true
 

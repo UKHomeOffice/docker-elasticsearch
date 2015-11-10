@@ -28,6 +28,7 @@ The variables and the defaults are shown below.
 By default, the container does not depend on [Kubernetes](http://kubernetes.io/). 
 
 * `CLUSTER_NAME=${CLUSTER_NAME:-elasticsearch-default}`
+* `NODE_NAME=${NODE_NAME:-$(echo $HOSTNAME)}` If this isn't specified all data will be lost if all nodes are stopped.
 * `NODE_MASTER=${NODE_MASTER:-true}`
 * `NODE_DATA=${NODE_DATA:-true}`
 * `HTTP_ENABLE=${HTTP_ENABLE:-true}`
@@ -38,6 +39,7 @@ By default, the container does not depend on [Kubernetes](http://kubernetes.io/)
    (usefull if service accounts are not used).
 * `CLOUD_ENABLE=${CLOUD_ENABLE:-false}` will enable the Kubernetes API discovery of peers.
 * `KUBERNETES_TRUST_CERT` when set to true will always trust the Kubernetes API. See [Kubernetes API Trust](examples/kubernetes.md#kubernetes-api-trust)
+* `INDEX_STORE_TYPE=${INDEX_STORE_TYPE:-default}` You can change the type of data store used.
 
 
 ### Ports
