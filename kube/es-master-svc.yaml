@@ -1,0 +1,15 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: elasticsearch-master
+  labels:
+    name: elasticsearch-master
+    service: elasticsearch
+spec:
+  selector:
+    service: elasticsearch
+    role: master
+  ports:
+    - name: http
+      port: 9300

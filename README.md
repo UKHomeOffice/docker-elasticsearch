@@ -1,88 +1,66 @@
-# Docker Elasticsearch
-
+# ElasticSearch on Kubernetes
 [![Build Status](https://travis-ci.org/UKHomeOffice/docker-elasticsearch.svg?branch=master)](https://travis-ci.org/UKHomeOffice/docker-elasticsearch)
+[![Docker Repository on Quay](https://quay.io/repository/ukhomeofficedigital/elasticsearch/status "Docker Repository on Quay")](https://quay.io/repository/ukhomeofficedigital/elasticsearch)
 
-Docker container for starting an [Elasticsearch](https://www.elastic.co/products/elasticsearch) cluster with [Kubernetes](http://kubernetes.io/) auto discovery support.
+ElasticSearch 2.2.x with kubernetes discovery plugin for simple deployment and
+discovery.
 
-## Getting Started
+### Configuration
+Configuration is done via environment variables.
 
-These instructions will cover how to start a container both in Docker and within a [Kubernetes](http://kubernetes.io/) cluster.
+The following configuration defaults may not necessarily be set to the same
+values in [kube/](kube/) example files.
 
-### Prerequisites
+* `CLUSTER_NAME`: ElasticSearch cluster name. Default: `elasticsearch`.
+* `NODE_NAME`: Node name. Default: `${HOSTNAME}` (kubernetes assigned pod name by default).
+* `PATH_DATA`: Path where ES stores its data. Default: `/data`.
+* `ES_HEAP_SIZE`: JVM heap size. Default: `450m`. If you adjust this parameter,
+  make sure to increase container limits as well.
+* `INDEX_AUTO_EXPAND_REPLICAS`: Whether to automatically expand index replicas
+  across data nodes. Default: `false`.
+* `NODE_MASTER`: Whether this node can be a master node. Default: `true`.
+* `NODE_DATA`: Whether this node can be a data node. Default: `true`.
+* `HTTP_ENABLE`: Whether this node can be a client (HTTP) node. Default: `true`.
+* `KUBERNETES_SERVICE`: kubernetes service name for master nodes. Default `elasticsearch-master`.
 
-In order to run this container you'll need docker installed.
-
-* [Windows](https://docs.docker.com/windows/started)
-* [OS X](https://docs.docker.com/mac/started/)
-* [Linux](https://docs.docker.com/linux/started/)
-
-Optionally:
-
-* A [Kubernetes](http://kubernetes.io/) cluster to enable Kubernetes api discovery of other nodes.
-
-### Usage
-
-### Enviroment Variables
-
-The variables and the defaults are shown below.
-By default, the container does not depend on [Kubernetes](http://kubernetes.io/). 
-
-* `CLUSTER_NAME=${CLUSTER_NAME:-elasticsearch-default}`
-* `NODE_NAME=${NODE_NAME:-$(echo $HOSTNAME)}` If this isn't specified all data will be lost if all nodes are stopped.
-* `NODE_MASTER=${NODE_MASTER:-true}`
-* `NODE_DATA=${NODE_DATA:-true}`
-* `HTTP_ENABLE=${HTTP_ENABLE:-true}`
-* `MULTICAST=${MULTICAST:-false}`
-* `NAMESPACE=${NAMESPACE:-default}`
-* `DISCOVERY_SERVICE=${DISCOVERY_SERVICE:-elasticsearch-discovery}`
-* `KUBECONFIG` path to a standard Kubernetes config file to use for authentication configuration  
-   (usefull if service accounts are not used).
-* `CLOUD_ENABLE=${CLOUD_ENABLE:-false}` will enable the Kubernetes API discovery of peers.
-* `KUBERNETES_TRUST_CERT` when set to true will always trust the Kubernetes API. See [Kubernetes API Trust](examples/kubernetes.md#kubernetes-api-trust)
-* `INDEX_STORE_TYPE=${INDEX_STORE_TYPE:-default}` You can change the type of data store used.
+For more kubernetes discovery plugin related options, see
+https://github.com/fabric8io/kubernetes-client. Our examples use just a
+standard kubernetes auth token to authenticate against the kubernetes API for
+discovery.
 
 
-### Ports
+### Deployment
+By default if you start the docker container, ElasticSearch will start in
+standalone mode.
 
-This container exposes:
+Deploying onto a Kubernetes cluster is fairly easy. There are example
+kubernetes controller and service files in [kube/](kube/) directory.
 
-* `9200` - The http [Elasticsearch](https://www.elastic.co/products/elasticsearch) API
-* `9300` - The [Elasticsearch](https://www.elastic.co/products/elasticsearch) transport protocol
 
-The example below will start a single Elasticsearch instance.
+#### Deploy Master Node
+First of all we need to deploy master service for ES master nodes to find each
+other and other communications between nodes. Then we can create the master
+replication controller.
 
-```
-docker run --name es_thing --rm=true -p 9200:9200 -p 9300:9300 quay.io/ukhomeofficedigital/elasticsearch:v0.1.0 
+```bash
+$ kubectl create -f kube/es-master-svc.yaml
+$ kubectl create -f kube/es-master-rc.yaml
 ```
 
-To use with [Kubernetes](http://kubernetes.io/) see the [kubernetes examples](examples/kubernetes.md).
+Wait a few seconds and verify whether it is up and running. You can also scale
+the master nodes to 3.
 
+```bash
+$ kubectl logs -f es-master-fdfw -c elasticsearch
+$ kubectl scale --replicas=3 rc/es-master
+```
 
-## Contributing
+#### Deploy Client and Data Nodes
+Once the master node is up and running, you can start deploying the rest of the cluster.
 
-Feel free to submit pull requests and issues. If it's a particularly large PR, you may wish to discuss
-it in an issue first.
+```bash
+$ kubectl create -f kube/es-svc.yaml
+$ kubectl create -f kube/es-client-rc.yaml
+$ kubectl create -f kube/es-data-rc.yaml
+```
 
-Please note that this project is released with a [Contributor Code of Conduct](code_of_conduct.md). 
-By participating in this project you agree to abide by its terms.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the 
-[tags on this repository](https://github.com/UKHomeOffice/docker-elasticsearch/tags). 
-
-## Authors
-
-* **Lewis Marshall** - *Initial work* - [Lewis Marshall](https://github.com/LewisMarshall)
-
-See also the list of [contributors](https://github.com/UKHomeOffice/docker-elasticsearch/contributors) who 
-participated in this project.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
-
-## Acknowledgments
-
-* Informed from the [official Docker image](https://hub.docker.com/_/elasticsearch/).
-* Adapted from [https://github.com/pires/kubernetes-elasticsearch-cluster](https://github.com/pires/docker-elasticsearch-kubernetes)

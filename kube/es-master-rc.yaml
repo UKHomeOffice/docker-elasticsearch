@@ -1,0 +1,58 @@
+---
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: es-master
+  labels:
+    service: elasticsearch
+    role: master
+spec:
+  replicas: 1
+  selector:
+    service: elasticsearch
+    role: master
+  template:
+    metadata:
+      labels:
+        service: elasticsearch
+        role: master
+    spec:
+      containers:
+        - name: elasticsearch
+          image: quay.io/ukhomeofficedigital/elasticsearch:v0.2.0
+          imagePullPolicy: Always
+          resources:
+            limits:
+              memory: "700Mi"
+          env:
+            - name: ES_HEAP_SIZE
+              value: "500m"
+            - name: CLUSTER_NAME
+              value: "elasticsearch"
+            - name: NODE_MASTER
+              value: "true"
+            - name: NODE_DATA
+              value: "false"
+            - name: HTTP_ENABLE
+              value: "false"
+            - name: ES_INDEX_AUTO_EXPAND_REPLICAS
+              value: "1-3"
+            - name: KUBERNETES_TRUST_CERTIFICATES
+              value: "true"
+            - name: KUBERNETES_AUTH_TOKEN
+              value: "99733c37-cbd8-4b03-a97b-5a2137c2f5bf"
+            - name: KUBERNETES_SERVICE
+              value: "elasticsearch-master"
+            - name: KUBERNETES_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+          ports:
+            - containerPort: 9300
+              name: transport
+          volumeMounts:
+            - mountPath: /data
+              name: data
+      volumes:
+        - emptyDir: {}
+          name: data

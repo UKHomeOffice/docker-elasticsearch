@@ -1,0 +1,5 @@
+---
+rules:
+  line-length:
+    max: 160
+    allow-non-breakable-words: yes
