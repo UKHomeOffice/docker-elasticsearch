@@ -23,3 +23,16 @@ cloud.kubernetes.service: ${KUBERNETES_SERVICE}
 cloud.kubernetes.namespace: ${KUBERNETES_NAMESPACE}
 discovery.type: kubernetes
 discovery.zen.ping.multicast.enabled: false
+
+searchguard.ssl.transport.enabled: ${ENABLE_TRANSPORT_SSL}
+searchguard.ssl.transport.keystore_filepath: certs/keystore.jks
+searchguard.ssl.transport.keystore_alias: cert
+searchguard.ssl.transport.resolve_hostname: false
+
+searchguard.ssl.transport.truststore_filepath: certs/truststore.jks
+searchguard.ssl.transport.truststore_alias: ca
+
+# searchguard.ssl.http.keystore_filepath: certs/keystore.jks
+# searchguard.ssl.http.keystore_alias: cert
+# searchguard.ssl.http.truststore_filepath: certs/truststore.jks
+# searchguard.ssl.http.truststore_alias: ca

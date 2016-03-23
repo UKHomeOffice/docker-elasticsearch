@@ -11,4 +11,6 @@ export HTTP_ENABLE=${HTTP_ENABLE:=true}
 export KUBERNETES_SERVICE=${KUBERNETES_SERVICE:=elasticsearch-master}
 export KUBERNETES_NAMESPACE=${KUBERNETES_NAMESPACE:=default}
 
+export ENABLE_TRANSPORT_SSL=${ENABLE_TRANSPORT_SSL:=false}
+
 su elasticsearch -c 'exec /elasticsearch/bin/elasticsearch'
