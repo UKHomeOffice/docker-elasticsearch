@@ -22,11 +22,26 @@ values in [kube/](kube/) example files.
 * `NODE_DATA`: Whether this node can be a data node. Default: `true`.
 * `HTTP_ENABLE`: Whether this node can be a client (HTTP) node. Default: `true`.
 * `KUBERNETES_SERVICE`: kubernetes service name for master nodes. Default `elasticsearch-master`.
+* `ENABLE_TRANSPORT_SSL`: whether to enable search-guard transport SSL. Default: `false`.
 
+
+### Plugins
+#### Kubernetes Discovery
 For more kubernetes discovery plugin related options, see
 https://github.com/fabric8io/kubernetes-client. Our examples use just a
 standard kubernetes auth token to authenticate against the kubernetes API for
 discovery.
+
+#### Search Guard SSL
+If you want to use transport TLS, please take a look at their documentation
+https://github.com/floragunncom/search-guard-ssl.
+
+ElasticSearch expects `truststore.jks` and `keystore.jks` files to be placed in
+`/elasticsearch/config/certs`. Keystore cert/key alias must be `cert` and
+truststore alias - `ca`. Bare in mind that certs need to be signed by the same
+CA. If you use vault, then take a look at
+https://github.com/UKHomeOffice/vaultjks, which could help you to get your
+certs from vault and create keystore files.
 
 
 ### Deployment
