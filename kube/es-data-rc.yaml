@@ -23,7 +23,7 @@ spec:
           imagePullPolicy: Always
           resources:
             limits:
-              memory: "700Mi"
+              memory: "1000Mi"
           env:
             - name: ES_HEAP_SIZE
               value: "500m"
