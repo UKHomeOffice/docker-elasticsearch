@@ -1,7 +1,7 @@
-FROM quay.io/ukhomeofficedigital/centos-base:v0.2.0
+FROM fedora:23
 
-RUN yum upgrade -y -q; yum clean all
-RUN yum install -y -q java-headless tar wget openssl; yum clean all
+RUN dnf upgrade -y -q; dnf clean all
+RUN dnf install -y -q java-headless tar wget openssl hostname; dnf clean all
 RUN adduser -d /data -m elasticsearch
 
 EXPOSE 9200 9300
