@@ -13,4 +13,5 @@ export KUBERNETES_NAMESPACE=${KUBERNETES_NAMESPACE:=default}
 
 export ENABLE_TRANSPORT_SSL=${ENABLE_TRANSPORT_SSL:=false}
 
+chown -R elasticsearch:elasticsearch /data
 su elasticsearch -c 'exec /elasticsearch/bin/elasticsearch'
