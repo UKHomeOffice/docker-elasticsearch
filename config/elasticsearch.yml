@@ -17,6 +17,7 @@ index.auto_expand_replicas: ${INDEX_AUTO_EXPAND_REPLICAS}
 
 http.enabled: ${HTTP_ENABLE}
 http.compression: true
+http.bind_host: ${HTTP_BIND_HOST}
 
 cloud.kubernetes.service: ${KUBERNETES_SERVICE}
 cloud.kubernetes.namespace: ${KUBERNETES_NAMESPACE}

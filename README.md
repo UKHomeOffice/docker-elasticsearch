@@ -21,6 +21,7 @@ values in [kube/](kube/) example files.
 * `NODE_MASTER`: Whether this node can be a master node. Default: `true`.
 * `NODE_DATA`: Whether this node can be a data node. Default: `true`.
 * `HTTP_ENABLE`: Whether this node can be a client (HTTP) node. Default: `true`.
+* `HTTP_BIND_HOST`: http bind address.. Default: `0.0.0.0`.
 * `KUBERNETES_SERVICE`: kubernetes service name for master nodes. Default `elasticsearch-master`.
 * `ENABLE_TRANSPORT_SSL`: whether to enable search-guard transport SSL. Default: `false`.
 
