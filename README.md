@@ -24,6 +24,10 @@ values in [kube/](kube/) example files.
 * `HTTP_BIND_HOST`: http bind address.. Default: `0.0.0.0`.
 * `KUBERNETES_SERVICE`: kubernetes service name for master nodes. Default `elasticsearch-master`.
 * `ENABLE_TRANSPORT_SSL`: whether to enable search-guard transport SSL. Default: `false`.
+* `DISCOVERY_ZEN_FD_PING_INTERVAL` - see https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-discovery-zen.html#fault-detection
+* `DISCOVERY_ZEN_FD_PING_TIMEOUT` - see https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-discovery-zen.html#fault-detection
+* `DISCOVERY_ZEN_FD_PING_RETRIES` - see https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-discovery-zen.html#fault-detection
+* `DISCOVERY_ZEN_PUBLISH_TIMEOUT` - see https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-discovery-zen.html#_cluster_state_updates
 
 
 ### Plugins
