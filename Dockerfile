@@ -10,7 +10,7 @@ ENV ES_VERSION 2.3.3
 RUN wget -q https://download.elasticsearch.org/elasticsearch/release/org/elasticsearch/distribution/tar/elasticsearch/${ES_VERSION}/elasticsearch-${ES_VERSION}.tar.gz -O - | tar -xzf -; mv elasticsearch-${ES_VERSION} /elasticsearch && mkdir -p /elasticsearch/config/scripts /elasticsearch/plugins
 RUN /elasticsearch/bin/plugin install io.fabric8/elasticsearch-cloud-kubernetes/${ES_VERSION}
 RUN /elasticsearch/bin/plugin install com.floragunn/search-guard-ssl/2.3.3.13 && (cd /elasticsearch/plugins/search-guard-ssl/ && wget -q http://repo1.maven.org/maven2/io/netty/netty-tcnative/1.1.33.Fork18/netty-tcnative-1.1.33.Fork18-linux-x86_64-fedora.jar)
-RUN /elasticsearch/bin/plugin install royrusso/elasticsearch-HQ
+RUN /elasticsearch/bin/plugin install royrusso/elasticsearch-HQ/v2.0.3
 
 VOLUME /data
 WORKDIR /elasticsearch
