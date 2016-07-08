@@ -18,6 +18,7 @@ values in [kube/](kube/) example files.
   make sure to increase container limits as well.
 * `INDEX_AUTO_EXPAND_REPLICAS`: Whether to automatically expand index replicas
   across data nodes. Default: `false`.
+* `INDEX_NUMBER_OF_SHARDS`: The default number of primary shards for each index. Default: `5`.
 * `NODE_MASTER`: Whether this node can be a master node. Default: `true`.
 * `NODE_DATA`: Whether this node can be a data node. Default: `true`.
 * `HTTP_ENABLE`: Whether this node can be a client (HTTP) node. Default: `true`.
