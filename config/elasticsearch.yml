@@ -14,6 +14,8 @@ security.manager.enabled: false
 network.host: 0.0.0.0
 
 index.auto_expand_replicas: ${INDEX_AUTO_EXPAND_REPLICAS}
+index.number_of_shards: ${INDEX_NUMBER_OF_SHARDS}
+index.number_of_replicas: ${INDEX_NUMBER_OF_REPLICAS}
 
 http.enabled: ${HTTP_ENABLE}
 http.compression: true
