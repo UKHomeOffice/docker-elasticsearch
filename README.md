@@ -20,6 +20,7 @@ values in [kube/](kube/) example files.
   across data nodes. Default: `false`.
 * `INDEX_NUMBER_OF_SHARDS`: The default number of primary shards for each index. Default: `5`.
 * `INDEX_NUMBER_OF_REPLICAS`: The number of replicas per shard that an index should create. Default `1`.
+* `INDEX_REFRESH_INTERVAL`: How often to refresh indexes. Default: `1s`.
 * `NODE_MASTER`: Whether this node can be a master node. Default: `true`.
 * `NODE_DATA`: Whether this node can be a data node. Default: `true`.
 * `HTTP_ENABLE`: Whether this node can be a client (HTTP) node. Default: `true`.
