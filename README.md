@@ -2,7 +2,7 @@
 [![Build Status](https://travis-ci.org/UKHomeOffice/docker-elasticsearch.svg?branch=master)](https://travis-ci.org/UKHomeOffice/docker-elasticsearch)
 [![Docker Repository on Quay](https://quay.io/repository/ukhomeofficedigital/elasticsearch/status "Docker Repository on Quay")](https://quay.io/repository/ukhomeofficedigital/elasticsearch)
 
-ElasticSearch 2.3.x with kubernetes discovery plugin for simple deployment and
+ElasticSearch 2.4.x with kubernetes discovery plugin for simple deployment and
 discovery.
 
 ### Configuration
