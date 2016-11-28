@@ -27,6 +27,7 @@ values in [kube/](kube/) example files.
 * `HTTP_BIND_HOST`: http bind address.. Default: `0.0.0.0`.
 * `KUBERNETES_SERVICE`: kubernetes service name for master nodes. Default `elasticsearch-master`.
 * `ENABLE_TRANSPORT_SSL`: whether to enable search-guard transport SSL. Default: `false`.
+* `DISCOVERY_TYPE`: The type of discovery for your cluster to use. Default `kubernetes`.
 * `DISCOVERY_ZEN_FD_PING_INTERVAL` - see https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-discovery-zen.html#fault-detection
 * `DISCOVERY_ZEN_FD_PING_TIMEOUT` - see https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-discovery-zen.html#fault-detection
 * `DISCOVERY_ZEN_FD_PING_RETRIES` - see https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-discovery-zen.html#fault-detection
@@ -86,4 +87,3 @@ $ kubectl create -f kube/es-svc.yaml
 $ kubectl create -f kube/es-client-rc.yaml
 $ kubectl create -f kube/es-data-rc.yaml
 ```
-

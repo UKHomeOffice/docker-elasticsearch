@@ -24,7 +24,7 @@ http.bind_host: ${HTTP_BIND_HOST}
 
 cloud.kubernetes.service: ${KUBERNETES_SERVICE}
 cloud.kubernetes.namespace: ${KUBERNETES_NAMESPACE}
-discovery.type: kubernetes
+discovery.type: ${DISCOVERY_TYPE}
 discovery.zen.ping.multicast.enabled: false
 discovery.zen.fd.ping_interval: ${DISCOVERY_ZEN_FD_PING_INTERVAL}
 discovery.zen.fd.ping_timeout: ${DISCOVERY_ZEN_FD_PING_TIMEOUT}
