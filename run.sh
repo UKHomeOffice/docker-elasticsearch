@@ -2,6 +2,7 @@
 
 export CLUSTER_NAME=${CLUSTER_NAME:=elasticsearch}
 export NODE_NAME=${NODE_NAME:=${HOSTNAME}}
+export NODE_LOCAL=${NODE_LOCAL:=false}
 export PATH_DATA=${PATH_DATA:=/data}
 export ES_HEAP_SIZE=${ES_HEAP_SIZE:=450m}
 export INDEX_AUTO_EXPAND_REPLICAS=${INDEX_AUTO_EXPAND_REPLICAS:=false}

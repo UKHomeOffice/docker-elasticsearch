@@ -13,6 +13,7 @@ values in [kube/](kube/) example files.
 
 * `CLUSTER_NAME`: ElasticSearch cluster name. Default: `elasticsearch`.
 * `NODE_NAME`: Node name. Default: `${HOSTNAME}` (kubernetes assigned pod name by default).
+* `NODE_LOCAL`: If set to true it will prevent the elasticsearch node from discovering other nodes on the network. Default: `false`.
 * `PATH_DATA`: Path where ES stores its data. Default: `/data`.
 * `ES_HEAP_SIZE`: JVM heap size. Default: `450m`. If you adjust this parameter,
   make sure to increase container limits as well.
