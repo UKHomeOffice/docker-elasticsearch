@@ -2,7 +2,7 @@
 [![Build Status](https://travis-ci.org/UKHomeOffice/docker-elasticsearch.svg?branch=master)](https://travis-ci.org/UKHomeOffice/docker-elasticsearch)
 [![Docker Repository on Quay](https://quay.io/repository/ukhomeofficedigital/elasticsearch/status "Docker Repository on Quay")](https://quay.io/repository/ukhomeofficedigital/elasticsearch)
 
-ElasticSearch 2.4.x with kubernetes discovery plugin for simple deployment and
+ElasticSearch 5.1.1 with kubernetes discovery plugin for simple deployment and
 discovery.
 
 ### Configuration
@@ -15,7 +15,7 @@ values in [kube/](kube/) example files.
 * `NODE_NAME`: Node name. Default: `${HOSTNAME}` (kubernetes assigned pod name by default).
 * `NODE_LOCAL`: If set to true it will prevent the elasticsearch node from discovering other nodes on the network. Default: `false`.
 * `PATH_DATA`: Path where ES stores its data. Default: `/data`.
-* `ES_HEAP_SIZE`: JVM heap size. Default: `450m`. If you adjust this parameter,
+* `ELASTIC_SEARCH_HEAP_SIZE`: JVM heap size. Default: `450m`. If you adjust this parameter,
   make sure to increase container limits as well.
 * `INDEX_AUTO_EXPAND_REPLICAS`: Whether to automatically expand index replicas
   across data nodes. Default: `false`.
