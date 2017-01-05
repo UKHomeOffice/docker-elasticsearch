@@ -43,7 +43,7 @@ if docker ps -a | grep es_thing ; then
 fi
 
 docker build -t es .
-${SUDO_CMD}  docker run --name es_thing -d -p 9200:9200 -p 9300:9300  es
+${SUDO_CMD}  docker run --ulimit=nofile=65536:65536 --ulimit=memlock=-1:-1 --name es_thing -d -p 9200:9200 -p 9300:9300 -e NODE_LOCAL=true es
 get http://${DOCKER_HOST_NAME}:9200/
 docker logs es_thing
 get http://${DOCKER_HOST_NAME}:9200/_cluster/health?pretty

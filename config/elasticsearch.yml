@@ -10,14 +10,8 @@ path.data: ${PATH_DATA}
 path.logs: ${PATH_DATA}/logs
 
 bootstrap.memory_lock: true
-security.manager.enabled: false
 
 network.host: 0.0.0.0
-
-index.auto_expand_replicas: ${INDEX_AUTO_EXPAND_REPLICAS}
-index.number_of_shards: ${INDEX_NUMBER_OF_SHARDS}
-index.number_of_replicas: ${INDEX_NUMBER_OF_REPLICAS}
-index.refresh_interval: ${INDEX_REFRESH_INTERVAL}
 
 http.enabled: ${HTTP_ENABLE}
 http.compression: true
@@ -25,8 +19,7 @@ http.bind_host: ${HTTP_BIND_HOST}
 
 cloud.kubernetes.service: ${KUBERNETES_SERVICE}
 cloud.kubernetes.namespace: ${KUBERNETES_NAMESPACE}
-discovery.type: ${DISCOVERY_TYPE}
-discovery.zen.ping.multicast.enabled: false
+discovery.zen.hosts_provider: ${DISCOVERY_TYPE}
 discovery.zen.fd.ping_interval: ${DISCOVERY_ZEN_FD_PING_INTERVAL}
 discovery.zen.fd.ping_timeout: ${DISCOVERY_ZEN_FD_PING_TIMEOUT}
 discovery.zen.fd.ping_retries: ${DISCOVERY_ZEN_FD_PING_RETRIES}
