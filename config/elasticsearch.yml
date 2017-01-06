@@ -37,3 +37,6 @@ searchguard.ssl.transport.truststore_alias: ca
 # searchguard.ssl.http.keystore_alias: cert
 # searchguard.ssl.http.truststore_filepath: certs/truststore.jks
 # searchguard.ssl.http.truststore_alias: ca
+
+# TODO: Evaluate whether it's worth paying for X-Pack advanced features. Basic monitoring is free.
+xpack.security.enabled: false
