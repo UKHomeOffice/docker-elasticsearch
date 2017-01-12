@@ -33,6 +33,9 @@ searchguard.ssl.transport.resolve_hostname: false
 searchguard.ssl.transport.truststore_filepath: certs/truststore.jks
 searchguard.ssl.transport.truststore_alias: ca
 
+thread_pool.bulk.queue_size: ${THREAD_POOL_BULK_QUEUE_SIZE}
+indices.memory.index_buffer_size: ${INDEX_BUFFER_SIZE}
+
 # searchguard.ssl.http.keystore_filepath: certs/keystore.jks
 # searchguard.ssl.http.keystore_alias: cert
 # searchguard.ssl.http.truststore_filepath: certs/truststore.jks
