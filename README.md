@@ -24,6 +24,7 @@ values in [kube/](kube/) example files.
 * `INDEX_REFRESH_INTERVAL`: How often to refresh indexes. Default: `1s`.
 * `NODE_MASTER`: Whether this node can be a master node. Default: `true`.
 * `NODE_DATA`: Whether this node can be a data node. Default: `true`.
+* `NODE_INGEST`: Whether this node can be a data ingesting node. Default: `true`.
 * `HTTP_ENABLE`: Whether this node can be a client (HTTP) node. Default: `true`.
 * `HTTP_BIND_HOST`: http bind address.. Default: `0.0.0.0`.
 * `KUBERNETES_SERVICE`: kubernetes service name for master nodes. Default `elasticsearch-master`.

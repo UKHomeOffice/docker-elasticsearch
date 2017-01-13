@@ -5,6 +5,7 @@ node.name: ${NODE_NAME}
 node.master: ${NODE_MASTER}
 node.data: ${NODE_DATA}
 node.local: ${NODE_LOCAL}
+node.ingest: ${NODE_INGEST}
 
 path.data: ${PATH_DATA}
 path.logs: ${PATH_DATA}/logs
