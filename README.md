@@ -17,11 +17,6 @@ values in [kube/](kube/) example files.
 * `PATH_DATA`: Path where ES stores its data. Default: `/data`.
 * `ELASTIC_SEARCH_HEAP_SIZE`: JVM heap size. Default: `450m`. If you adjust this parameter,
   make sure to increase container limits as well.
-* `INDEX_AUTO_EXPAND_REPLICAS`: Whether to automatically expand index replicas
-  across data nodes. Default: `false`.
-* `INDEX_NUMBER_OF_SHARDS`: The default number of primary shards for each index. Default: `5`.
-* `INDEX_NUMBER_OF_REPLICAS`: The number of replicas per shard that an index should create. Default `1`.
-* `INDEX_REFRESH_INTERVAL`: How often to refresh indexes. Default: `1s`.
 * `NODE_MASTER`: Whether this node can be a master node. Default: `true`.
 * `NODE_DATA`: Whether this node can be a data node. Default: `true`.
 * `NODE_INGEST`: Whether this node can be a data ingesting node. Default: `true`.
