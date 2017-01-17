@@ -12,6 +12,9 @@ path.logs: ${PATH_DATA}/logs
 
 bootstrap.memory_lock: true
 
+gateway.expected_master_nodes: ${GATEWAY_EXPECTED_MASTER_NODES}
+gateway.expected_data_nodes: ${GATEWAY_EXPECTED_DATA_NODES}
+
 network.host: 0.0.0.0
 
 http.enabled: ${HTTP_ENABLE}

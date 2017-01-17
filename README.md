@@ -22,6 +22,8 @@ values in [kube/](kube/) example files.
 * `INDEX_NUMBER_OF_SHARDS`: The default number of primary shards for each index. Default: `5`.
 * `INDEX_NUMBER_OF_REPLICAS`: The number of replicas per shard that an index should create. Default `1`.
 * `INDEX_REFRESH_INTERVAL`: How often to refresh indexes. Default: `1s`.
+* `GATEWAY_EXPECTED_MASTER_NODES` - See https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-gateway.html
+* `GATEWAY_EXPECTED_DATA_NODES` - See https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-gateway.html
 * `NODE_MASTER`: Whether this node can be a master node. Default: `true`.
 * `NODE_DATA`: Whether this node can be a data node. Default: `true`.
 * `NODE_INGEST`: Whether this node can be a data ingesting node. Default: `true`.
