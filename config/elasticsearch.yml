@@ -28,6 +28,7 @@ discovery.zen.fd.ping_interval: ${DISCOVERY_ZEN_FD_PING_INTERVAL}
 discovery.zen.fd.ping_timeout: ${DISCOVERY_ZEN_FD_PING_TIMEOUT}
 discovery.zen.fd.ping_retries: ${DISCOVERY_ZEN_FD_PING_RETRIES}
 discovery.zen.publish_timeout: ${DISCOVERY_ZEN_PUBLISH_TIMEOUT}
+discovery.zen.minimum_master_nodes: ${DISCOVERY_ZEN_MINIMUM_MASTER_NODES}
 
 searchguard.ssl.transport.enabled: ${ENABLE_TRANSPORT_SSL}
 searchguard.ssl.transport.keystore_filepath: certs/keystore.jks
