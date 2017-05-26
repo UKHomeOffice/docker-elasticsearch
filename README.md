@@ -39,6 +39,14 @@ values in [kube/](kube/) example files.
 * `DISCOVERY_ZEN_MINIMUM_MASTER_NODES` - see https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-discovery-zen.html#master-election. Default: `1`
 * `THREAD_POOL_BULK_QUEUE_SIZE` - see https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-threadpool.html
 * `INDEX_BUFFER_SIZE` - see https://www.elastic.co/guide/en/elasticsearch/reference/5.1/indexing-buffer.html
+* `XPACK_SECURITY_ENABLE` - Whether X-Pack security plugin is enabled. Default: `false`
+* `XPACK_SECURITY_AUDIT_ENABLE` - Whether to enable auditing to keep track of attempted and successful interactions with Elasticsearch cluster. Default: `false`.
+* `XPACK_SECURITY_AUDIT_OUTPUT` - The output for audit data. Default: `logfile`. Possible options: `index`, 'logfile'.
+* `XPACK_SECURITY_TRANSPORT_SSL_ENABLE` - Whether to enable transport SSL. Default: `false`
+* `XPACK_SECURITY_HTTP_SSL_ENABLE` - Whether to enable HTTP SSL. Default: `false`
+* `XPACK_SSL_KEY_PATH` - The full path to the node key file. This must be a location within the Elasticsearch configuration directory. 
+* `XPACK_SSL_CERT_PATH` - The full path to the node certificate. This must be a location within the Elasticsearch configuration directory.
+* `XPACK_SSL_CA_CERT_PATH` -  Path to the CA certificate that should be trusted. This path must be a location within the Elasticsearch configuration directory.
 
 
 ### Plugins
