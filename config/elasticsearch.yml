@@ -51,7 +51,10 @@ xpack.security.transport.ssl.enabled: ${XPACK_SECURITY_TRANSPORT_SSL_ENABLE}
 xpack.security.http.ssl.enabled: ${XPACK_SECURITY_HTTP_SSL_ENABLE}
 xpack.security.transport.ssl.verification_mode: certificate
 xpack.security.audit.enabled: ${XPACK_SECURITY_AUDIT_ENABLE}
-xpack.security.audit.outputs: [ "${XPACK_SECURITY_AUDIT_OUTPUTS}" ]
+xpack.security.audit.outputs: ${XPACK_SECURITY_AUDIT_OUTPUTS}
 xpack.ssl.key: ${XPACK_SSL_KEY_PATH}
 xpack.ssl.certificate: ${XPACK_SSL_CERT_PATH}
 xpack.ssl.certificate_authorities: [ "${XPACK_SSL_CA_CERT_PATH}" ]
+xpack.monitoring.enabled: ${XPACK_MONITORING_ENABLE}
+xpack.ml.enabled: ${XPACK_ML_ENABLE}
+xpack.watcher.enabled: ${XPACK_WATCHER_ENABLE}

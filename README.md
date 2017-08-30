@@ -2,7 +2,7 @@
 [![Build Status](https://travis-ci.org/UKHomeOffice/docker-elasticsearch.svg?branch=master)](https://travis-ci.org/UKHomeOffice/docker-elasticsearch)
 [![Docker Repository on Quay](https://quay.io/repository/ukhomeofficedigital/elasticsearch/status "Docker Repository on Quay")](https://quay.io/repository/ukhomeofficedigital/elasticsearch)
 
-ElasticSearch 5.1.1 with kubernetes discovery plugin for simple deployment and
+ElasticSearch 5.5.1 with kubernetes discovery plugin for simple deployment and
 discovery.
 
 ### Configuration
@@ -47,6 +47,9 @@ values in [kube/](kube/) example files.
 * `XPACK_SSL_KEY_PATH` - The full path to the node key file. This must be a location within the Elasticsearch configuration directory. 
 * `XPACK_SSL_CERT_PATH` - The full path to the node certificate. This must be a location within the Elasticsearch configuration directory.
 * `XPACK_SSL_CA_CERT_PATH` -  Path to the CA certificate that should be trusted. This path must be a location within the Elasticsearch configuration directory.
+* `XPACK_MONITORING_ENABLE` - Whether to enable X-Pack monitoring features. Default: `false`.
+* `XPACK_ML_ENABLE` - Whether to enable X-Pack machine learning features. Default: `false`.
+* `XPACK_WATCHER_ENABLE` - Whether to enable X-Pack Watcher. Default: `false`.
 
 
 ### Plugins
