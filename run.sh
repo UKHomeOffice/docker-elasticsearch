@@ -41,6 +41,4 @@ export XPACK_WATCHER_ENABLE=${XPACK_WATCHER_ENABLE:=false}
 
 export ENABLE_TRANSPORT_SSL=${ENABLE_TRANSPORT_SSL:=false}
 
-chown -R elasticsearch:elasticsearch /data
-
-su elasticsearch -c 'exec /elasticsearch/bin/elasticsearch'
+/elasticsearch/bin/elasticsearch

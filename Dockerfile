@@ -2,7 +2,7 @@ FROM fedora:25
 
 RUN dnf upgrade -y -q; dnf clean all
 RUN dnf install -y -q java-headless tar wget openssl apr hostname; dnf clean all
-RUN adduser -d /data -m elasticsearch
+RUN groupadd -r -g 1000 elasticsearch && adduser -d /data -m -u 1000 -g 1000 elasticsearch
 
 EXPOSE 9200 9300
 
@@ -13,6 +13,9 @@ RUN /elasticsearch/bin/elasticsearch-plugin install com.floragunn:search-guard-s
 RUN /elasticsearch/bin/elasticsearch-plugin install x-pack && \
     chmod 0755 /elasticsearch/config/x-pack && \
     chmod 0644 /elasticsearch/config/x-pack/*
+RUN chown -R elasticsearch:elasticsearch /data /elasticsearch
+
+USER elasticsearch
 
 VOLUME /data
 WORKDIR /elasticsearch
