@@ -58,3 +58,16 @@ xpack.ssl.certificate_authorities: [ "${XPACK_SSL_CA_CERT_PATH}" ]
 xpack.monitoring.enabled: ${XPACK_MONITORING_ENABLE}
 xpack.ml.enabled: ${XPACK_ML_ENABLE}
 xpack.watcher.enabled: ${XPACK_WATCHER_ENABLE}
+
+# Email setup for Watcher alerts
+
+xpack.notification.email.account:
+    ses_account:
+        smtp:
+            auth: ${XPACK_SES_AUTH_ENABLE}
+            starttls.enable: true
+            starttls.required: true
+            host: ${XPACK_SES_HOST}
+            port: ${XPACK_SES_PORT}
+            user: ${XPACK_SES_USER}
+            password: ${XPACK_SES_PASSWORD}
