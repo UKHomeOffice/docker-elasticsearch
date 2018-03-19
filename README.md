@@ -39,6 +39,9 @@ values in [kube/](kube/) example files.
 * `DISCOVERY_ZEN_MINIMUM_MASTER_NODES` - see https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-discovery-zen.html#master-election. Default: `1`
 * `THREAD_POOL_BULK_QUEUE_SIZE` - see https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-threadpool.html
 * `INDEX_BUFFER_SIZE` - see https://www.elastic.co/guide/en/elasticsearch/reference/5.1/indexing-buffer.html
+* `CLOUD_AWS_S3_ACCESS_KEY` - Cloud AWS S3 access key for repository-s3 plugin. See https://www.elastic.co/guide/en/elasticsearch/plugins/5.5/repository-s3.html
+* `CLOUD_AWS_S3_SECRET_KEY` - Cloud AWS S3 secret key for repository-s3 plugin. See https://www.elastic.co/guide/en/elasticsearch/plugins/5.5/repository-s3.html
+* `CLOUD_AWS_S3_REGION` - Cloud AWS S3 region for repository-s3 plugin. See https://www.elastic.co/guide/en/elasticsearch/plugins/5.5/repository-s3.html
 * `XPACK_SECURITY_ENABLE` - Whether X-Pack security plugin is enabled. Default: `false`
 * `XPACK_SECURITY_AUDIT_ENABLE` - Whether to enable auditing to keep track of attempted and successful interactions with Elasticsearch cluster. Default: `false`.
 * `XPACK_SECURITY_AUDIT_OUTPUT` - The output for audit data. Default: `logfile`. Possible options: `index`, 'logfile'.

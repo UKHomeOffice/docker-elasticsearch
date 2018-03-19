@@ -13,6 +13,7 @@ RUN /elasticsearch/bin/elasticsearch-plugin install com.floragunn:search-guard-s
 RUN /elasticsearch/bin/elasticsearch-plugin install x-pack && \
     chmod 0755 /elasticsearch/config/x-pack && \
     chmod 0644 /elasticsearch/config/x-pack/*
+RUN /elasticsearch/bin/elasticsearch-plugin install repository-s3
 RUN chown -R elasticsearch:elasticsearch /data /elasticsearch
 
 USER elasticsearch
