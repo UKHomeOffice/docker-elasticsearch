@@ -44,12 +44,20 @@ values in [kube/](kube/) example files.
 * `XPACK_SECURITY_AUDIT_OUTPUT` - The output for audit data. Default: `logfile`. Possible options: `index`, 'logfile'.
 * `XPACK_SECURITY_TRANSPORT_SSL_ENABLE` - Whether to enable transport SSL. Default: `false`
 * `XPACK_SECURITY_HTTP_SSL_ENABLE` - Whether to enable HTTP SSL. Default: `false`
-* `XPACK_SSL_KEY_PATH` - The full path to the node key file. This must be a location within the Elasticsearch configuration directory. 
+* `XPACK_SSL_KEY_PATH` - The full path to the node key file. This must be a location within the Elasticsearch configuration directory.
 * `XPACK_SSL_CERT_PATH` - The full path to the node certificate. This must be a location within the Elasticsearch configuration directory.
 * `XPACK_SSL_CA_CERT_PATH` -  Path to the CA certificate that should be trusted. This path must be a location within the Elasticsearch configuration directory.
 * `XPACK_MONITORING_ENABLE` - Whether to enable X-Pack monitoring features. Default: `false`.
 * `XPACK_ML_ENABLE` - Whether to enable X-Pack machine learning features. Default: `false`.
 * `XPACK_WATCHER_ENABLE` - Whether to enable X-Pack Watcher. Default: `false`.
+* `XPACK_EMAIL_DEFAULTS_FROM` - The default FROM email address to be configured for all watches
+* `XPACK_EMAIL_SMTP_AUTH` - Whether auth is required for email
+* `XPACK_EMAIL_SMTP_STARTTLS_ENABLE` - TLS is enabled for the smtp host
+* `XPACK_EMAIL_SMTP_STARTTLS_REQUIRED` - Require TLS communications with the smtp host
+* `XPACK_EMAIL_SMTP_HOST` - The SMTP host address
+* `XPACK_EMAIL_SMTP_PORT` - The SMTP host port to communicate on (e.g. 25, 587)
+* `XPACK_EMAIL_SMTP_USER` - The username for auth with the SMTP host
+* `XPACK_EMAIL_SMTP_PASS` - The password for auth with the SMTP host
 
 
 ### Plugins

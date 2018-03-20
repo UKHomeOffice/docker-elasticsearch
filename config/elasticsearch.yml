@@ -58,3 +58,12 @@ xpack.ssl.certificate_authorities: [ "${XPACK_SSL_CA_CERT_PATH}" ]
 xpack.monitoring.enabled: ${XPACK_MONITORING_ENABLE}
 xpack.ml.enabled: ${XPACK_ML_ENABLE}
 xpack.watcher.enabled: ${XPACK_WATCHER_ENABLE}
+
+xpack.notification.email.account.ses_account.email_defaults.from: ${XPACK_EMAIL_DEFAULTS_FROM}
+xpack.notification.email.account.ses_account.smtp.auth: ${XPACK_EMAIL_SMTP_AUTH}
+xpack.notification.email.account.ses_account.smtp.starttls.enable: ${XPACK_EMAIL_SMTP_STARTTLS_ENABLE}
+xpack.notification.email.account.ses_account.smtp.starttls.required: ${XPACK_EMAIL_SMTP_STARTTLS_REQUIRED}
+xpack.notification.email.account.ses_account.smtp.host: ${XPACK_EMAIL_SMTP_HOST}
+xpack.notification.email.account.ses_account.smtp.port: ${XPACK_EMAIL_SMTP_PORT}
+xpack.notification.email.account.ses_account.smtp.user: ${XPACK_EMAIL_SMTP_USER}
+xpack.notification.email.account.ses_account.smtp.password: ${XPACK_EMAIL_SMTP_PASS}
