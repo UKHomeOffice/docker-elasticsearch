@@ -41,6 +41,10 @@ searchguard.ssl.transport.truststore_alias: ca
 thread_pool.bulk.queue_size: ${THREAD_POOL_BULK_QUEUE_SIZE}
 indices.memory.index_buffer_size: ${INDEX_BUFFER_SIZE}
 
+cloud.aws.s3.access_key: ${CLOUD_AWS_S3_ACCESS_KEY}
+cloud.aws.s3.secret_key: ${CLOUD_AWS_S3_SECRET_KEY}
+cloud.aws.s3.region: ${CLOUD_AWS_S3_REGION}
+
 # searchguard.ssl.http.keystore_filepath: certs/keystore.jks
 # searchguard.ssl.http.keystore_alias: cert
 # searchguard.ssl.http.truststore_filepath: certs/truststore.jks
