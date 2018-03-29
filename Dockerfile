@@ -16,7 +16,7 @@ RUN /elasticsearch/bin/elasticsearch-plugin install x-pack && \
 RUN /elasticsearch/bin/elasticsearch-plugin install repository-s3
 RUN chown -R elasticsearch:elasticsearch /data /elasticsearch
 
-USER elasticsearch
+USER 1000
 
 VOLUME /data
 WORKDIR /elasticsearch
