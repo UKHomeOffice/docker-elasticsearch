@@ -54,6 +54,8 @@ values in [kube/](kube/) example files.
 * `XPACK_ML_ENABLE` - Whether to enable X-Pack machine learning features. Default: `false`.
 * `XPACK_WATCHER_ENABLE` - Whether to enable X-Pack Watcher. Default: `false`.
 * `XPACK_EMAIL_DEFAULTS_FROM` - The default FROM email address to be configured for all watches
+* `XPACK_REPORTING_ENABLE` - Whether to enable X-Pack Reporting. Set to `false` to disable
+* `XPACK_REPORTING_KEY` - Set to any text string. By default, Kibana generates a random key when it starts, which causes any pending reports to fail on restart. Configure this setting to use the same key across restarts.
 * `XPACK_EMAIL_SMTP_AUTH` - Whether auth is required for email
 * `XPACK_EMAIL_SMTP_STARTTLS_ENABLE` - TLS is enabled for the smtp host
 * `XPACK_EMAIL_SMTP_STARTTLS_REQUIRED` - Require TLS communications with the smtp host

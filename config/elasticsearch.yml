@@ -62,6 +62,8 @@ xpack.ssl.certificate_authorities: [ "${XPACK_SSL_CA_CERT_PATH}" ]
 xpack.monitoring.enabled: ${XPACK_MONITORING_ENABLE}
 xpack.ml.enabled: ${XPACK_ML_ENABLE}
 xpack.watcher.enabled: ${XPACK_WATCHER_ENABLE}
+xpack.reporting.enabled: ${XPACK_REPORTING_ENABLE}
+xpack.reporting.encryptionKey: ${XPACK_REPORTING_KEY}
 
 xpack.notification.email.account.ses_account.email_defaults.from: ${XPACK_EMAIL_DEFAULTS_FROM}
 xpack.notification.email.account.ses_account.smtp.auth: ${XPACK_EMAIL_SMTP_AUTH}
