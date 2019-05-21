@@ -41,12 +41,6 @@ spec:
               value: "true"
             - name: KUBERNETES_AUTH_TOKEN
               value: "99733c37-cbd8-4b03-a97b-5a2137c2f5bf"
-            - name: KUBERNETES_SERVICE
-              value: "elasticsearch-master"
-            - name: KUBERNETES_NAMESPACE
-              valueFrom:
-                fieldRef:
-                  fieldPath: metadata.namespace
           ports:
             - containerPort: 9300
               name: transport
