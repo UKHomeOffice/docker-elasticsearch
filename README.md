@@ -62,11 +62,6 @@ values in [kube/](kube/) example files.
 
 
 ### Plugins
-#### Kubernetes Discovery
-For more kubernetes discovery plugin related options, see
-https://github.com/fabric8io/kubernetes-client. Our examples use just a
-standard kubernetes auth token to authenticate against the kubernetes API for
-discovery.
 
 ### Deployment
 By default if you start the docker container, ElasticSearch will start in
