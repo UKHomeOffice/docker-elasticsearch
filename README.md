@@ -44,6 +44,8 @@ values in [kube/](kube/) example files.
 * `CLOUD_AWS_S3_REGION` - Cloud AWS S3 region for repository-s3 plugin. See https://www.elastic.co/guide/en/elasticsearch/plugins/5.5/repository-s3.html
 * `XPACK_SECURITY_ENABLE` - Whether X-Pack security plugin is enabled. Default: `false`
 * `XPACK_SECURITY_AUDIT_ENABLE` - Whether to enable auditing to keep track of attempted and successful interactions with Elasticsearch cluster. Default: `false`.
+* `XPACK_SECURITY_AUDIT_INDEX_EVENTS_EXCLUDE` - Excludes the specified auditing events from indexing. By default, no events are excluded. Accepts a string value with comma separated events. See https://www.elastic.co/guide/en/elasticsearch/reference/5.5/auditing-settings.html#index-audit-settings
+* `XPACK_SECURITY_AUDIT_LOGFILE_EVENTS_EXCLUDE` - Excludes the specified events from log output. By default, no events are excluded. Accepts a string value with comma separated events. See https://www.elastic.co/guide/en/elasticsearch/reference/5.5/auditing-settings.html#event-audit-settings
 * `XPACK_SECURITY_AUDIT_OUTPUT` - The output for audit data. Default: `logfile`. Possible options: `index`, 'logfile'.
 * `XPACK_SECURITY_TRANSPORT_SSL_ENABLE` - Whether to enable transport SSL. Default: `false`
 * `XPACK_SECURITY_HTTP_SSL_ENABLE` - Whether to enable HTTP SSL. Default: `false`
