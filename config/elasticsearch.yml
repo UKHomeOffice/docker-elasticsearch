@@ -51,6 +51,7 @@ xpack.security.http.ssl.supported_protocols: "${XPACK_SECURITY_HTTP_SSL_PROTOCOL
 xpack.monitoring.enabled: ${XPACK_MONITORING_ENABLE}
 xpack.ml.enabled: ${XPACK_ML_ENABLE}
 xpack.watcher.enabled: ${XPACK_WATCHER_ENABLE}
+xpack.security.authc.accept_default_password: ${XPACK_ACCEPT_DEFAULT_PASSWORD}
 
 xpack.notification.email.account.ses_account.email_defaults.from: ${XPACK_EMAIL_DEFAULTS_FROM}
 xpack.notification.email.account.ses_account.smtp.auth: ${XPACK_EMAIL_SMTP_AUTH}

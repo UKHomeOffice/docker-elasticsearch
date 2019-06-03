@@ -72,9 +72,15 @@ export XPACK_EMAIL_SMTP_HOST=${XPACK_EMAIL_SMTP_HOST:=localhost}
 export XPACK_EMAIL_SMTP_PORT=${XPACK_EMAIL_SMTP_PORT:=25}
 export XPACK_EMAIL_SMTP_USER=${XPACK_EMAIL_SMTP_USER:=false}
 export XPACK_EMAIL_SMTP_PASS=${XPACK_EMAIL_SMTP_PASS:=false}
+export XPACK_ACCEPT_DEFAULT_PASSWORD=${XPACK_ACCEPT_DEFAULT_PASSWORD:=false}
+export BOOTSTRAP_PASSWORD=${BOOTSTRAP_PASSWORD:=}
 
 # Create keystore
 /elasticsearch/bin/elasticsearch-keystore create
+
+if [ "x${BOOTSTRAP_PASSWORD}x" != "xx" ]; then
+    add_to_keystore bootstrap.password ${BOOTSTRAP_PASSWORD}
+fi
 
 add_to_keystore xpack.notification.email.account.ses_account.smtp.user ${XPACK_EMAIL_SMTP_USER}
 add_to_keystore xpack.notification.email.account.ses_account.smtp.secure_password ${XPACK_EMAIL_SMTP_PASS}

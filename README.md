@@ -59,6 +59,8 @@ values in [kube/](kube/) example files.
 * `XPACK_EMAIL_SMTP_PORT` - The SMTP host port to communicate on (e.g. 25, 587)
 * `XPACK_EMAIL_SMTP_USER` - The username for auth with the SMTP host
 * `XPACK_EMAIL_SMTP_PASS` - The password for auth with the SMTP host
+* `XPACK_ACCEPT_DEFAULT_PASSWORD` - Whether to allow default changeme password. Default: `false`.
+* `BOOTSTRAP_PASSWORD`  - Optional bootstrap password for elastic user. No Default.
 
 
 ### Plugins
