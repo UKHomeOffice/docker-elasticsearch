@@ -12,7 +12,7 @@ if [ -z $XPACK_SSL_KEY_PATH ] && [ -z $XPACK_SSL_CERT_PATH ]; then
 fi
 
 add_to_keystore() {
-    if ["x${1}x" == "xx" ] || ["x${2}x" == "xx" ]; then
+    if [ "x${1}x" == "xx" ] || [ "x${2}x" == "xx" ]; then
         echo "Empty values sent to add_to_keystore $1"
         return
     fi
