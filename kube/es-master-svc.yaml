@@ -10,6 +10,8 @@ spec:
   selector:
     service: elasticsearch
     role: master
+  # Headless
+  clusterIP: None
   ports:
     - name: http
       port: 9300

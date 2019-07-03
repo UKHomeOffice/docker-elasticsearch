@@ -2,7 +2,7 @@
 [![Build Status](https://travis-ci.org/UKHomeOffice/docker-elasticsearch.svg?branch=master)](https://travis-ci.org/UKHomeOffice/docker-elasticsearch)
 [![Docker Repository on Quay](https://quay.io/repository/ukhomeofficedigital/elasticsearch/status "Docker Repository on Quay")](https://quay.io/repository/ukhomeofficedigital/elasticsearch)
 
-ElasticSearch 5.5.1 with kubernetes discovery plugin for simple deployment and
+ElasticSearch 5.6.16 with kubernetes discovery plugin for simple deployment and
 discovery.
 
 ### Configuration
@@ -13,7 +13,6 @@ values in [kube/](kube/) example files.
 
 * `CLUSTER_NAME`: ElasticSearch cluster name. Default: `elasticsearch`.
 * `NODE_NAME`: Node name. Default: `${HOSTNAME}` (kubernetes assigned pod name by default).
-* `NODE_LOCAL`: If set to true it will prevent the elasticsearch node from discovering other nodes on the network. Default: `false`.
 * `PATH_DATA`: Path where ES stores its data. Default: `/data`.
 * `ELASTIC_SEARCH_HEAP_SIZE`: JVM heap size. Default: `450m`. If you adjust this parameter,
   make sure to increase container limits as well.
@@ -24,6 +23,7 @@ values in [kube/](kube/) example files.
 * `INDEX_REFRESH_INTERVAL`: How often to refresh indexes. Default: `1s`.
 * `GATEWAY_EXPECTED_MASTER_NODES` - See https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-gateway.html
 * `GATEWAY_EXPECTED_DATA_NODES` - See https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-gateway.html
+* `MEM_LOCK` - Whether to enable bootstrap.memory_lock. Default: `true`.
 * `NODE_MASTER`: Whether this node can be a master node. Default: `true`.
 * `NODE_DATA`: Whether this node can be a data node. Default: `true`.
 * `NODE_INGEST`: Whether this node can be a data ingesting node. Default: `true`.
@@ -31,17 +31,17 @@ values in [kube/](kube/) example files.
 * `HTTP_BIND_HOST`: http bind address.. Default: `0.0.0.0`.
 * `KUBERNETES_SERVICE`: kubernetes service name for master nodes. Default `elasticsearch-master`.
 * `ENABLE_TRANSPORT_SSL`: whether to enable search-guard transport SSL. Default: `false`.
-* `DISCOVERY_TYPE`: The type of discovery for your cluster to use. Default `kubernetes`.
 * `DISCOVERY_ZEN_FD_PING_INTERVAL` - see https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-discovery-zen.html#fault-detection
 * `DISCOVERY_ZEN_FD_PING_TIMEOUT` - see https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-discovery-zen.html#fault-detection
 * `DISCOVERY_ZEN_FD_PING_RETRIES` - see https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-discovery-zen.html#fault-detection
 * `DISCOVERY_ZEN_PUBLISH_TIMEOUT` - see https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-discovery-zen.html#_cluster_state_updates
+* `DISCOVERY_ZEN_UNICAST_HOST` - see https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-discovery-zen.html#fault-detection. Default `elasticsearch`
 * `DISCOVERY_ZEN_MINIMUM_MASTER_NODES` - see https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-discovery-zen.html#master-election. Default: `1`
 * `THREAD_POOL_BULK_QUEUE_SIZE` - see https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-threadpool.html
 * `INDEX_BUFFER_SIZE` - see https://www.elastic.co/guide/en/elasticsearch/reference/5.1/indexing-buffer.html
-* `CLOUD_AWS_S3_ACCESS_KEY` - Cloud AWS S3 access key for repository-s3 plugin. See https://www.elastic.co/guide/en/elasticsearch/plugins/5.5/repository-s3.html
-* `CLOUD_AWS_S3_SECRET_KEY` - Cloud AWS S3 secret key for repository-s3 plugin. See https://www.elastic.co/guide/en/elasticsearch/plugins/5.5/repository-s3.html
-* `CLOUD_AWS_S3_REGION` - Cloud AWS S3 region for repository-s3 plugin. See https://www.elastic.co/guide/en/elasticsearch/plugins/5.5/repository-s3.html
+* `CLOUD_AWS_S3_ACCESS_KEY` - Cloud AWS S3 access key for repository-s3 plugin. See https://www.elastic.co/guide/en/elasticsearch/plugins/6.8/repository-s3-client.html
+* `CLOUD_AWS_S3_SECRET_KEY` - Cloud AWS S3 secret key for repository-s3 plugin. See https://www.elastic.co/guide/en/elasticsearch/plugins/6.8/repository-s3-client.html
+* `CLOUD_AWS_S3_ENDPOINT` - Cloud AWS S3 endpoint for repository-s3 plugin. See https://www.elastic.co/guide/en/elasticsearch/plugins/6.8/repository-s3-client.html
 * `XPACK_SECURITY_ENABLE` - Whether X-Pack security plugin is enabled. Default: `false`
 * `XPACK_SECURITY_AUDIT_ENABLE` - Whether to enable auditing to keep track of attempted and successful interactions with Elasticsearch cluster. Default: `false`.
 * `XPACK_SECURITY_AUDIT_INDEX_EVENTS_EXCLUDE` - Excludes the specified auditing events from indexing. By default, no events are excluded. Accepts a string value with comma separated events. See https://www.elastic.co/guide/en/elasticsearch/reference/5.5/auditing-settings.html#index-audit-settings
@@ -66,11 +66,6 @@ values in [kube/](kube/) example files.
 
 
 ### Plugins
-#### Kubernetes Discovery
-For more kubernetes discovery plugin related options, see
-https://github.com/fabric8io/kubernetes-client. Our examples use just a
-standard kubernetes auth token to authenticate against the kubernetes API for
-discovery.
 
 #### Search Guard SSL
 If you want to use transport TLS, please take a look at their documentation

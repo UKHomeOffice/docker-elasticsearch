@@ -1,10 +1,22 @@
 #!/bin/bash
 
+add_to_keystore() {
+    if [ "x${1}x" == "xx" ] || [ "x${2}x" == "xx" ]; then
+        echo "Empty values sent to add_to_keystore $1"
+        return
+    else
+        echo $2 | /elasticsearch/bin/elasticsearch-keystore add --stdin $1
+        /elasticsearch/bin/elasticsearch-keystore list $1 > /dev/null 2>&1
+        rc=$?
+        [ $rc -ne 0 ] && "There was an error adding $1 to keystore"
+    fi
+}
+
 export CLUSTER_NAME=${CLUSTER_NAME:=elasticsearch}
 export NODE_NAME=${NODE_NAME:=${HOSTNAME}}
-export NODE_LOCAL=${NODE_LOCAL:=false}
 export NODE_INGEST=${NODE_INGEST:=true}
 export PATH_DATA=${PATH_DATA:=/data}
+export MEM_LOCK=${MEM_LOCK:=true}
 export ELASTIC_SEARCH_HEAP_SIZE=${ELASTIC_SEARCH_HEAP_SIZE:=450m}
 export ES_JAVA_OPTS="${ES_JAVA_OPTS} -Xms${ELASTIC_SEARCH_HEAP_SIZE} -Xmx${ELASTIC_SEARCH_HEAP_SIZE} -Dlog4j2.disable.jmx=true"
 export INDEX_AUTO_EXPAND_REPLICAS=${INDEX_AUTO_EXPAND_REPLICAS:=false}
@@ -13,7 +25,6 @@ export INDEX_NUMBER_OF_REPLICAS=${INDEX_NUMBER_OF_REPLICAS:=1}
 export INDEX_REFRESH_INTERVAL=${INDEX_REFRESH_INTERVAL:=1s}
 export GATEWAY_EXPECTED_MASTER_NODES=${GATEWAY_EXPECTED_MASTER_NODES:=0}
 export GATEWAY_EXPECTED_DATA_NODES=${GATEWAY_EXPECTED_DATA_NODES:=0}
-export DISCOVERY_TYPE=${DISCOVERY_TYPE:=kubernetes}
 export NODE_MASTER=${NODE_MASTER:=true}
 export NODE_DATA=${NODE_DATA:=true}
 export HTTP_ENABLE=${HTTP_ENABLE:=true}
@@ -24,12 +35,13 @@ export DISCOVERY_ZEN_FD_PING_INTERVAL=${DISCOVERY_ZEN_FD_PING_INTERVAL:=1s}
 export DISCOVERY_ZEN_FD_PING_TIMEOUT=${DISCOVERY_ZEN_FD_PING_TIMEOUT:=30s}
 export DISCOVERY_ZEN_FD_PING_RETRIES=${DISCOVERY_ZEN_FD_PING_RETRIES:=3}
 export DISCOVERY_ZEN_PUBLISH_TIMEOUT=${DISCOVERY_ZEN_PUBLISH_TIMEOUT:=30s}
+export DISCOVERY_ZEN_UNICAST_HOST=${DISCOVERY_ZEN_UNICAST_HOST:=elasticsearch}
 export DISCOVERY_ZEN_MINIMUM_MASTER_NODES=${DISCOVERY_ZEN_MINIMUM_MASTER_NODES:=1}
 export THREAD_POOL_BULK_QUEUE_SIZE=${THREAD_POOL_BULK_QUEUE_SIZE:=50}
 export INDEX_BUFFER_SIZE=${INDEX_BUFFER_SIZE:=10%}
 export CLOUD_AWS_S3_ACCESS_KEY=${CLOUD_AWS_S3_ACCESS_KEY:=}
 export CLOUD_AWS_S3_SECRET_KEY=${CLOUD_AWS_S3_SECRET_KEY:=}
-export CLOUD_AWS_S3_REGION=${CLOUD_AWS_S3_REGION:=eu-west-2}
+export CLOUD_AWS_S3_ENDPOINT=${CLOUD_AWS_S3_ENDPOINT:=s3.eu-west-2.amazonaws.com}
 export XPACK_SECURITY_ENABLE=${XPACK_SECURITY_ENABLE:=false}
 export XPACK_SECURITY_AUDIT_ENABLE=${XPACK_SECURITY_AUDIT_ENABLE:=false}
 export XPACK_SECURITY_AUDIT_INDEX_EVENTS_EXCLUDE=${XPACK_SECURITY_AUDIT_INDEX_EVENTS_EXCLUDE:=}
@@ -53,5 +65,13 @@ export XPACK_EMAIL_SMTP_USER=${XPACK_EMAIL_SMTP_USER:=false}
 export XPACK_EMAIL_SMTP_PASS=${XPACK_EMAIL_SMTP_PASS:=false}
 
 export ENABLE_TRANSPORT_SSL=${ENABLE_TRANSPORT_SSL:=false}
+
+# Create keystore
+/elasticsearch/bin/elasticsearch-keystore create
+
+add_to_keystore s3.client.default.access_key ${CLOUD_AWS_S3_ACCESS_KEY}
+add_to_keystore s3.client.default.secret_key ${CLOUD_AWS_S3_SECRET_KEY}
+add_to_keystore xpack.notification.email.account.ses_account.smtp.user ${XPACK_EMAIL_SMTP_USER}
+add_to_keystore xpack.notification.email.account.ses_account.smtp.secure_password ${XPACK_EMAIL_SMTP_PASS}
 
 /elasticsearch/bin/elasticsearch

@@ -11,6 +11,8 @@ spec:
   selector:
     service: elasticsearch
     role: client
+  # Headless
+  clusterIP: None
   ports:
     - name: http
       port: 9200
