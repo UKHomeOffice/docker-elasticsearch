@@ -15,11 +15,12 @@ add_to_keystore() {
     if [ "x${1}x" == "xx" ] || [ "x${2}x" == "xx" ]; then
         echo "Empty values sent to add_to_keystore $1"
         return
+    else
+        echo $2 | /elasticsearch/bin/elasticsearch-keystore add --stdin $1
+        /elasticsearch/bin/elasticsearch-keystore list $1 > /dev/null 2>&1
+        rc=$?
+        [ $rc -ne 0 ] && "There was an error adding $1 to keystore"
     fi
-
-    echo $2 | /elasticsearch/bin/elasticsearch-keystore add --stdin $1
-    rc=`/elasticsearch/bin/elasticsearch-keystore list $1 > /dev/null 2>&1`
-    [ $rc -ne 0 ] && "There was an error adding $1 to keystore"
 }
 
 export CLUSTER_NAME=${CLUSTER_NAME:=elasticsearch}
@@ -79,6 +80,8 @@ if [ "x${BOOTSTRAP_PASSWORD}x" != "xx" ]; then
     add_to_keystore bootstrap.password ${BOOTSTRAP_PASSWORD}
 fi
 
+add_to_keystore s3.client.default.access_key ${CLOUD_AWS_S3_ACCESS_KEY}
+add_to_keystore s3.client.default.secret_key ${CLOUD_AWS_S3_SECRET_KEY}
 add_to_keystore xpack.notification.email.account.ses_account.smtp.user ${XPACK_EMAIL_SMTP_USER}
 add_to_keystore xpack.notification.email.account.ses_account.smtp.secure_password ${XPACK_EMAIL_SMTP_PASS}
 
