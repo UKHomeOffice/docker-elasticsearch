@@ -4,13 +4,12 @@ cluster.name: ${CLUSTER_NAME}
 node.name: ${NODE_NAME}
 node.master: ${NODE_MASTER}
 node.data: ${NODE_DATA}
-node.local: ${NODE_LOCAL}
 node.ingest: ${NODE_INGEST}
 
 path.data: ${PATH_DATA}
 path.logs: ${PATH_DATA}/logs
 
-bootstrap.memory_lock: true
+bootstrap.memory_lock: ${MEM_LOCK}
 
 gateway.expected_master_nodes: ${GATEWAY_EXPECTED_MASTER_NODES}
 gateway.expected_data_nodes: ${GATEWAY_EXPECTED_DATA_NODES}
@@ -21,13 +20,13 @@ http.enabled: ${HTTP_ENABLE}
 http.compression: true
 http.bind_host: ${HTTP_BIND_HOST}
 
-cloud.kubernetes.service: ${KUBERNETES_SERVICE}
-cloud.kubernetes.namespace: ${KUBERNETES_NAMESPACE}
-discovery.zen.hosts_provider: ${DISCOVERY_TYPE}
+s3.client.default.endpoint: ${CLOUD_AWS_S3_ENDPOINT}
+
 discovery.zen.fd.ping_interval: ${DISCOVERY_ZEN_FD_PING_INTERVAL}
 discovery.zen.fd.ping_timeout: ${DISCOVERY_ZEN_FD_PING_TIMEOUT}
 discovery.zen.fd.ping_retries: ${DISCOVERY_ZEN_FD_PING_RETRIES}
 discovery.zen.publish_timeout: ${DISCOVERY_ZEN_PUBLISH_TIMEOUT}
+discovery.zen.ping.unicast.hosts: ${DISCOVERY_ZEN_UNICAST_HOST}
 discovery.zen.minimum_master_nodes: ${DISCOVERY_ZEN_MINIMUM_MASTER_NODES}
 
 searchguard.ssl.transport.enabled: ${ENABLE_TRANSPORT_SSL}
@@ -40,15 +39,6 @@ searchguard.ssl.transport.truststore_alias: ca
 
 thread_pool.bulk.queue_size: ${THREAD_POOL_BULK_QUEUE_SIZE}
 indices.memory.index_buffer_size: ${INDEX_BUFFER_SIZE}
-
-cloud.aws.s3.access_key: ${CLOUD_AWS_S3_ACCESS_KEY}
-cloud.aws.s3.secret_key: ${CLOUD_AWS_S3_SECRET_KEY}
-cloud.aws.s3.region: ${CLOUD_AWS_S3_REGION}
-
-# searchguard.ssl.http.keystore_filepath: certs/keystore.jks
-# searchguard.ssl.http.keystore_alias: cert
-# searchguard.ssl.http.truststore_filepath: certs/truststore.jks
-# searchguard.ssl.http.truststore_alias: ca
 
 xpack.security.enabled: ${XPACK_SECURITY_ENABLE}
 xpack.security.transport.ssl.enabled: ${XPACK_SECURITY_TRANSPORT_SSL_ENABLE}
@@ -71,5 +61,3 @@ xpack.notification.email.account.ses_account.smtp.starttls.enable: ${XPACK_EMAIL
 xpack.notification.email.account.ses_account.smtp.starttls.required: ${XPACK_EMAIL_SMTP_STARTTLS_REQUIRED}
 xpack.notification.email.account.ses_account.smtp.host: ${XPACK_EMAIL_SMTP_HOST}
 xpack.notification.email.account.ses_account.smtp.port: ${XPACK_EMAIL_SMTP_PORT}
-xpack.notification.email.account.ses_account.smtp.user: ${XPACK_EMAIL_SMTP_USER}
-xpack.notification.email.account.ses_account.smtp.password: ${XPACK_EMAIL_SMTP_PASS}
