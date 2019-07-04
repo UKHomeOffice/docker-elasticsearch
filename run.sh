@@ -71,7 +71,5 @@ export ENABLE_TRANSPORT_SSL=${ENABLE_TRANSPORT_SSL:=false}
 
 add_to_keystore s3.client.default.access_key ${CLOUD_AWS_S3_ACCESS_KEY}
 add_to_keystore s3.client.default.secret_key ${CLOUD_AWS_S3_SECRET_KEY}
-add_to_keystore xpack.notification.email.account.ses_account.smtp.user ${XPACK_EMAIL_SMTP_USER}
-add_to_keystore xpack.notification.email.account.ses_account.smtp.secure_password ${XPACK_EMAIL_SMTP_PASS}
 
 /elasticsearch/bin/elasticsearch
