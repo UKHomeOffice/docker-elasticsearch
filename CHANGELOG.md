@@ -2,6 +2,12 @@
 
 ## 6.8.1-1
 
+### IMPORTANT
+The default `elastic` user password is no longer supported. If you are using the default password for the `elastic` user then you MUST change it *BEFORE* upgrading to this version.
+
+For new installations the built-in users' passwords must now be set with the `bin/elasticsearch-setup-passwords` tool:
+https://www.elastic.co/guide/en/elastic-stack-overview/6.8/built-in-users.html
+
 Upgrades Elasticsearch to version 6.8.1: https://www.elastic.co/guide/en/elasticsearch/reference/6.8/es-release-notes.html
 
 Removes search-guard-ssl plugin and generic `xpack.ssl.` settings, replaced by `xpack.security.transport.ssl` and `xpack.security.http.ssl`.
