@@ -16,7 +16,6 @@ gateway.expected_data_nodes: ${GATEWAY_EXPECTED_DATA_NODES}
 
 network.host: 0.0.0.0
 
-http.enabled: ${HTTP_ENABLE}
 http.compression: true
 http.bind_host: ${HTTP_BIND_HOST}
 
@@ -29,28 +28,28 @@ discovery.zen.publish_timeout: ${DISCOVERY_ZEN_PUBLISH_TIMEOUT}
 discovery.zen.ping.unicast.hosts: ${DISCOVERY_ZEN_UNICAST_HOST}
 discovery.zen.minimum_master_nodes: ${DISCOVERY_ZEN_MINIMUM_MASTER_NODES}
 
-searchguard.ssl.transport.enabled: ${ENABLE_TRANSPORT_SSL}
-searchguard.ssl.transport.keystore_filepath: certs/keystore.jks
-searchguard.ssl.transport.keystore_alias: cert
-searchguard.ssl.transport.resolve_hostname: false
-
-searchguard.ssl.transport.truststore_filepath: certs/truststore.jks
-searchguard.ssl.transport.truststore_alias: ca
-
-thread_pool.bulk.queue_size: ${THREAD_POOL_BULK_QUEUE_SIZE}
+thread_pool.write.queue_size: ${THREAD_POOL_WRITE_QUEUE_SIZE}
 indices.memory.index_buffer_size: ${INDEX_BUFFER_SIZE}
 
 xpack.security.enabled: ${XPACK_SECURITY_ENABLE}
-xpack.security.transport.ssl.enabled: ${XPACK_SECURITY_TRANSPORT_SSL_ENABLE}
-xpack.security.http.ssl.enabled: ${XPACK_SECURITY_HTTP_SSL_ENABLE}
-xpack.security.transport.ssl.verification_mode: certificate
 xpack.security.audit.enabled: ${XPACK_SECURITY_AUDIT_ENABLE}
 xpack.security.audit.index.events.exclude: ${XPACK_SECURITY_AUDIT_INDEX_EVENTS_EXCLUDE}
 xpack.security.audit.logfile.events.exclude: ${XPACK_SECURITY_AUDIT_LOGFILE_EVENTS_EXCLUDE}
-xpack.security.audit.outputs: ${XPACK_SECURITY_AUDIT_OUTPUTS}
-xpack.ssl.key: ${XPACK_SSL_KEY_PATH}
-xpack.ssl.certificate: ${XPACK_SSL_CERT_PATH}
-xpack.ssl.certificate_authorities: [ "${XPACK_SSL_CA_CERT_PATH}" ]
+xpack.security.audit.outputs: ${XPACK_SECURITY_AUDIT_OUTPUT}
+
+xpack.security.transport.ssl.enabled: ${XPACK_SECURITY_TRANSPORT_SSL_ENABLE}
+xpack.security.transport.ssl.verification_mode: ${XPACK_SSL_VERIFY_MODE}
+xpack.security.transport.ssl.key: ${XPACK_SSL_KEY_PATH}
+xpack.security.transport.ssl.certificate: ${XPACK_SSL_CERT_PATH}
+xpack.security.transport.ssl.certificate_authorities: [ "${XPACK_SSL_CA_CERT_PATH}" ]
+xpack.security.transport.ssl.supported_protocols: "${XPACK_SECURITY_TRANSPORT_SSL_PROTOCOLS}"
+
+xpack.security.http.ssl.enabled: ${XPACK_SECURITY_HTTP_SSL_ENABLE}
+xpack.security.http.ssl.key: ${XPACK_SSL_KEY_PATH}
+xpack.security.http.ssl.certificate: ${XPACK_SSL_CERT_PATH}
+xpack.security.http.ssl.certificate_authorities: [ "${XPACK_SSL_CA_CERT_PATH}" ]
+xpack.security.http.ssl.supported_protocols: "${XPACK_SECURITY_HTTP_SSL_PROTOCOLS}"
+
 xpack.monitoring.enabled: ${XPACK_MONITORING_ENABLE}
 xpack.ml.enabled: ${XPACK_ML_ENABLE}
 xpack.watcher.enabled: ${XPACK_WATCHER_ENABLE}
@@ -61,5 +60,3 @@ xpack.notification.email.account.ses_account.smtp.starttls.enable: ${XPACK_EMAIL
 xpack.notification.email.account.ses_account.smtp.starttls.required: ${XPACK_EMAIL_SMTP_STARTTLS_REQUIRED}
 xpack.notification.email.account.ses_account.smtp.host: ${XPACK_EMAIL_SMTP_HOST}
 xpack.notification.email.account.ses_account.smtp.port: ${XPACK_EMAIL_SMTP_PORT}
-xpack.notification.email.account.ses_account.smtp.user: ${XPACK_EMAIL_SMTP_USER}
-xpack.notification.email.account.ses_account.smtp.password: ${XPACK_EMAIL_SMTP_PASS}

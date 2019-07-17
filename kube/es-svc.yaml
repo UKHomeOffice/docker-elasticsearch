@@ -16,3 +16,24 @@ spec:
   ports:
     - name: http
       port: 9200
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: elasticsearch-discovery
+  labels:
+    name: elasticsearch-discovery
+  annotations:
+    service.alpha.kubernetes.io/tolerate-unready-endpoints: "true"
+spec:
+  clusterIP: None
+  selector:
+    service: elasticsearch
+  ports:
+    - name: cluster
+      port: 9300
+      protocol: TCP
+      targetPort: 9300
+  publishNotReadyAddresses: true
+  sessionAffinity: None
+  type: ClusterIP
