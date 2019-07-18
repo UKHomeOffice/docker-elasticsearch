@@ -61,3 +61,4 @@ xpack.notification.email.account.ses_account.smtp.starttls.enable: ${XPACK_EMAIL
 xpack.notification.email.account.ses_account.smtp.starttls.required: ${XPACK_EMAIL_SMTP_STARTTLS_REQUIRED}
 xpack.notification.email.account.ses_account.smtp.host: ${XPACK_EMAIL_SMTP_HOST}
 xpack.notification.email.account.ses_account.smtp.port: ${XPACK_EMAIL_SMTP_PORT}
+xpack.notification.email.account.ses_account.smtp.user: ${XPACK_EMAIL_SMTP_USER}
