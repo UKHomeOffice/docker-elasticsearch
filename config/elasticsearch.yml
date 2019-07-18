@@ -51,6 +51,7 @@ xpack.security.http.ssl.certificate_authorities: [ "${XPACK_SSL_CA_CERT_PATH}" ]
 xpack.security.http.ssl.supported_protocols: "${XPACK_SECURITY_HTTP_SSL_PROTOCOLS}"
 
 xpack.monitoring.enabled: ${XPACK_MONITORING_ENABLE}
+xpack.monitoring.collection.enabled: ${XPACK_MONITORING_COLLECTION_ENABLE}
 xpack.ml.enabled: ${XPACK_ML_ENABLE}
 xpack.watcher.enabled: ${XPACK_WATCHER_ENABLE}
 

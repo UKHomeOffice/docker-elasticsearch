@@ -3,7 +3,10 @@
 ## 6.8.1-1
 
 ### IMPORTANT
-The default `elastic` user password is no longer supported. If you are using the default password for the `elastic` user then you MUST change it *BEFORE* upgrading to this version.
+
+If you are using the default password for the `elastic` user then you MUST change it *BEFORE* upgrading to this version.
+
+The default `changeme` password is no longer supported, for any user.
 
 For new installations the built-in users' passwords must now be set with the `bin/elasticsearch-setup-passwords` tool:
 https://www.elastic.co/guide/en/elastic-stack-overview/6.8/built-in-users.html
@@ -32,6 +35,7 @@ The following environment variables are ADDED:
 * `XPACK_SECURITY_HTTP_SSL_PROTOCOLS`
 * `XPACK_SECURITY_TRANSPORT_SSL_PROTOCOLS`
 * `XPACK_SSL_VERIFY_MODE`
+* `XPACK_MONITORING_COLLECTION_ENABLE`
 * `THREAD_POOL_WRITE_QUEUE_SIZE`
 * `CLOUD_AWS_S3_ACCESS_KEY`
 * `CLOUD_AWS_S3_SECRET_KEY`

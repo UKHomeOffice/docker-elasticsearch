@@ -50,6 +50,7 @@ values in [kube/](kube/) example files.
 * `XPACK_SSL_CERT_PATH` - The full path to the node certificate. This must be a location within the Elasticsearch configuration directory.
 * `XPACK_SSL_CA_CERT_PATH` -  Path to the CA certificate that should be trusted. This path must be a location within the Elasticsearch configuration directory.
 * `XPACK_MONITORING_ENABLE` - Whether to enable X-Pack monitoring features. Default: `false`.
+* `XPACK_MONITORING_COLLECTION_ENABLE` - Whether to use X-Pack monitoring features. Default: `false`.
 * `XPACK_ML_ENABLE` - Whether to enable X-Pack machine learning features. Default: `false`.
 * `XPACK_WATCHER_ENABLE` - Whether to enable X-Pack Watcher. Default: `false`.
 * `XPACK_EMAIL_DEFAULTS_FROM` - The default FROM email address to be configured for all watches
