@@ -2,8 +2,7 @@
 
 export ES_SSL_HOST_NAME=${ES_SSL_HOST_NAME:=elasticsearch-0.es.logging.svc.cluster.local}
 
-if [ -z $XPACK_SSL_KEY_PATH ] && [ -z $XPACK_SSL_CERT_PATH ]; then
-
+if [ -z "${XPACK_SSL_KEY_PATH}" ] && [ -z "${XPACK_SSL_CERT_PATH}" ]; then
     mkdir -p /elasticsearch/config/certs
     openssl req -x509 -nodes -newkey rsa:4096 -subj "/CN=${ES_SSL_HOST_NAME}" -keyout /elasticsearch/config/certs/elasticsearch.key -out /elasticsearch/config/certs/elasticsearch.crt -days 365
     export XPACK_SSL_KEY_PATH=/elasticsearch/config/certs/elasticsearch.key
@@ -12,7 +11,7 @@ if [ -z $XPACK_SSL_KEY_PATH ] && [ -z $XPACK_SSL_CERT_PATH ]; then
 fi
 
 add_to_keystore() {
-    if [ "x${1}x" == "xx" ] || [ "x${2}x" == "xx" ]; then
+    if [ -z "${1}" ] || [ -z "${2}" ]; then
         echo "Empty values sent to add_to_keystore $1"
         return
     else
@@ -57,7 +56,6 @@ export XPACK_SECURITY_TRANSPORT_SSL_PROTOCOLS=${XPACK_SECURITY_TRANSPORT_SSL_PRO
 export XPACK_SECURITY_ENABLE=${XPACK_SECURITY_ENABLE:=false}
 export XPACK_SECURITY_AUDIT_ENABLE=${XPACK_SECURITY_AUDIT_ENABLE:=false}
 export XPACK_SECURITY_AUDIT_LOGFILE_EVENTS_EXCLUDE=${XPACK_SECURITY_AUDIT_LOGFILE_EVENTS_EXCLUDE:=}
-export XPACK_SECURITY_AUDIT_OUTPUT=${XPACK_SECURITY_AUDIT_OUTPUT:=logfile}
 export XPACK_SECURITY_TRANSPORT_SSL_ENABLE=${XPACK_SECURITY_TRANSPORT_SSL_ENABLE:=false}
 export XPACK_SECURITY_HTTP_SSL_PROTOCOLS=${XPACK_SECURITY_HTTP_SSL_PROTOCOLS:="TLSv1.2,TLSv1.1"}
 export XPACK_SECURITY_HTTP_SSL_ENABLE=${XPACK_SECURITY_HTTP_SSL_ENABLE:=false}
@@ -76,9 +74,14 @@ export XPACK_EMAIL_SMTP_HOST=${XPACK_EMAIL_SMTP_HOST:=localhost}
 export XPACK_EMAIL_SMTP_PORT=${XPACK_EMAIL_SMTP_PORT:=25}
 export XPACK_EMAIL_SMTP_USER=${XPACK_EMAIL_SMTP_USER:=false}
 export XPACK_EMAIL_SMTP_PASS=${XPACK_EMAIL_SMTP_PASS:=false}
+export BOOTSTRAP_PASSWORD=${BOOTSTRAP_PASSWORD:=}
 
 # Create keystore
 /elasticsearch/bin/elasticsearch-keystore create
+
+if [ -n "${BOOTSTRAP_PASSWORD}" ]; then
+    add_to_keystore bootstrap.password ${BOOTSTRAP_PASSWORD}
+fi
 
 add_to_keystore s3.client.default.access_key ${CLOUD_AWS_S3_ACCESS_KEY}
 add_to_keystore s3.client.default.secret_key ${CLOUD_AWS_S3_SECRET_KEY}
