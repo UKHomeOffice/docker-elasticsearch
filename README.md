@@ -41,9 +41,8 @@ values in [kube/](kube/) example files.
 * `XPACK_SECURITY_ENABLE` - Whether X-Pack security plugin is enabled. Default: `false`
 * `XPACK_SSL_VERIFY_MODE` - Level of verification on TLS comms. Default: `certificate`
 * `XPACK_SECURITY_AUDIT_ENABLE` - Whether to enable auditing to keep track of attempted and successful interactions with Elasticsearch cluster. Default: `false`.
-* `XPACK_SECURITY_AUDIT_INDEX_EVENTS_EXCLUDE` - Excludes the specified auditing events from indexing. By default, no events are excluded. Accepts a string value with comma separated events. See https://www.elastic.co/guide/en/elasticsearch/reference/5.5/auditing-settings.html#index-audit-settings
 * `XPACK_SECURITY_AUDIT_LOGFILE_EVENTS_EXCLUDE` - Excludes the specified events from log output. By default, no events are excluded. Accepts a string value with comma separated events. See https://www.elastic.co/guide/en/elasticsearch/reference/5.5/auditing-settings.html#event-audit-settings
-* `XPACK_SECURITY_AUDIT_OUTPUT` - Audit outputs. Default: `logfile`. Possible options: `logfile`.
+* `XPACK_SECURITY_AUDIT_OUTPUT` - Audit output. Default: `logfile`. Possible options: `logfile`.
 * `XPACK_SECURITY_TRANSPORT_SSL_ENABLE` - Whether to enable transport SSL. Default: `false`
 * `XPACK_SECURITY_HTTP_SSL_ENABLE` - Whether to enable HTTP SSL. Default: `false`
 * `XPACK_SSL_KEY_PATH` - The full path to the node key file. This must be a location within the Elasticsearch configuration directory.
