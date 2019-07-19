@@ -63,7 +63,6 @@ values in [kube/](kube/) example files.
 * `XPACK_ACCEPT_DEFAULT_PASSWORD` - Whether to allow default changeme password. Default: `false`.
 * `BOOTSTRAP_PASSWORD`  - Optional bootstrap password for elastic user. No Default.
 
-
 ### Plugins
 
 ### Deployment
