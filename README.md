@@ -2,8 +2,7 @@
 [![Build Status](https://travis-ci.org/UKHomeOffice/docker-elasticsearch.svg?branch=master)](https://travis-ci.org/UKHomeOffice/docker-elasticsearch)
 [![Docker Repository on Quay](https://quay.io/repository/ukhomeofficedigital/elasticsearch/status "Docker Repository on Quay")](https://quay.io/repository/ukhomeofficedigital/elasticsearch)
 
-ElasticSearch 5.6.16 with kubernetes discovery plugin for simple deployment and
-discovery.
+ElasticSearch 6.8.1.
 
 ### Configuration
 Configuration is done via environment variables.
@@ -27,32 +26,30 @@ values in [kube/](kube/) example files.
 * `NODE_MASTER`: Whether this node can be a master node. Default: `true`.
 * `NODE_DATA`: Whether this node can be a data node. Default: `true`.
 * `NODE_INGEST`: Whether this node can be a data ingesting node. Default: `true`.
-* `HTTP_ENABLE`: Whether this node can be a client (HTTP) node. Default: `true`.
 * `HTTP_BIND_HOST`: http bind address.. Default: `0.0.0.0`.
-* `KUBERNETES_SERVICE`: kubernetes service name for master nodes. Default `elasticsearch-master`.
-* `ENABLE_TRANSPORT_SSL`: whether to enable search-guard transport SSL. Default: `false`.
+* `THREAD_POOL_WRITE_QUEUE_SIZE` - see https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-threadpool.html
 * `DISCOVERY_ZEN_FD_PING_INTERVAL` - see https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-discovery-zen.html#fault-detection
 * `DISCOVERY_ZEN_FD_PING_TIMEOUT` - see https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-discovery-zen.html#fault-detection
 * `DISCOVERY_ZEN_FD_PING_RETRIES` - see https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-discovery-zen.html#fault-detection
 * `DISCOVERY_ZEN_PUBLISH_TIMEOUT` - see https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-discovery-zen.html#_cluster_state_updates
 * `DISCOVERY_ZEN_UNICAST_HOST` - see https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-discovery-zen.html#fault-detection. Default `elasticsearch`
 * `DISCOVERY_ZEN_MINIMUM_MASTER_NODES` - see https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-discovery-zen.html#master-election. Default: `1`
-* `THREAD_POOL_BULK_QUEUE_SIZE` - see https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-threadpool.html
 * `INDEX_BUFFER_SIZE` - see https://www.elastic.co/guide/en/elasticsearch/reference/5.1/indexing-buffer.html
 * `CLOUD_AWS_S3_ACCESS_KEY` - Cloud AWS S3 access key for repository-s3 plugin. See https://www.elastic.co/guide/en/elasticsearch/plugins/6.8/repository-s3-client.html
 * `CLOUD_AWS_S3_SECRET_KEY` - Cloud AWS S3 secret key for repository-s3 plugin. See https://www.elastic.co/guide/en/elasticsearch/plugins/6.8/repository-s3-client.html
 * `CLOUD_AWS_S3_ENDPOINT` - Cloud AWS S3 endpoint for repository-s3 plugin. See https://www.elastic.co/guide/en/elasticsearch/plugins/6.8/repository-s3-client.html
 * `XPACK_SECURITY_ENABLE` - Whether X-Pack security plugin is enabled. Default: `false`
+* `XPACK_SSL_VERIFY_MODE` - Level of verification on TLS comms. Default: `certificate`
 * `XPACK_SECURITY_AUDIT_ENABLE` - Whether to enable auditing to keep track of attempted and successful interactions with Elasticsearch cluster. Default: `false`.
-* `XPACK_SECURITY_AUDIT_INDEX_EVENTS_EXCLUDE` - Excludes the specified auditing events from indexing. By default, no events are excluded. Accepts a string value with comma separated events. See https://www.elastic.co/guide/en/elasticsearch/reference/5.5/auditing-settings.html#index-audit-settings
 * `XPACK_SECURITY_AUDIT_LOGFILE_EVENTS_EXCLUDE` - Excludes the specified events from log output. By default, no events are excluded. Accepts a string value with comma separated events. See https://www.elastic.co/guide/en/elasticsearch/reference/5.5/auditing-settings.html#event-audit-settings
-* `XPACK_SECURITY_AUDIT_OUTPUT` - The output for audit data. Default: `logfile`. Possible options: `index`, 'logfile'.
+* `XPACK_SECURITY_AUDIT_OUTPUT` - Audit output. Default: `logfile`. Possible options: `logfile`.
 * `XPACK_SECURITY_TRANSPORT_SSL_ENABLE` - Whether to enable transport SSL. Default: `false`
 * `XPACK_SECURITY_HTTP_SSL_ENABLE` - Whether to enable HTTP SSL. Default: `false`
 * `XPACK_SSL_KEY_PATH` - The full path to the node key file. This must be a location within the Elasticsearch configuration directory.
 * `XPACK_SSL_CERT_PATH` - The full path to the node certificate. This must be a location within the Elasticsearch configuration directory.
 * `XPACK_SSL_CA_CERT_PATH` -  Path to the CA certificate that should be trusted. This path must be a location within the Elasticsearch configuration directory.
 * `XPACK_MONITORING_ENABLE` - Whether to enable X-Pack monitoring features. Default: `false`.
+* `XPACK_MONITORING_COLLECTION_ENABLE` - Whether to use X-Pack monitoring features. Default: `false`.
 * `XPACK_ML_ENABLE` - Whether to enable X-Pack machine learning features. Default: `false`.
 * `XPACK_WATCHER_ENABLE` - Whether to enable X-Pack Watcher. Default: `false`.
 * `XPACK_EMAIL_DEFAULTS_FROM` - The default FROM email address to be configured for all watches
@@ -63,21 +60,11 @@ values in [kube/](kube/) example files.
 * `XPACK_EMAIL_SMTP_PORT` - The SMTP host port to communicate on (e.g. 25, 587)
 * `XPACK_EMAIL_SMTP_USER` - The username for auth with the SMTP host
 * `XPACK_EMAIL_SMTP_PASS` - The password for auth with the SMTP host
+* `XPACK_ACCEPT_DEFAULT_PASSWORD` - Whether to allow default changeme password. Default: `false`.
+* `BOOTSTRAP_PASSWORD`  - Optional bootstrap password for elastic user. No Default.
 
 
 ### Plugins
-
-#### Search Guard SSL
-If you want to use transport TLS, please take a look at their documentation
-https://github.com/floragunncom/search-guard-ssl.
-
-ElasticSearch expects `truststore.jks` and `keystore.jks` files to be placed in
-`/elasticsearch/config/certs`. Keystore cert/key alias must be `cert` and
-truststore alias - `ca`. Bare in mind that certs need to be signed by the same
-CA. If you use vault, then take a look at
-https://github.com/UKHomeOffice/vaultjks, which could help you to get your
-certs from vault and create keystore files.
-
 
 ### Deployment
 By default if you start the docker container, ElasticSearch will start in

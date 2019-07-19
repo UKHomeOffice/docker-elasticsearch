@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: elasticsearch
-          image: quay.io/ukhomeofficedigital/elasticsearch:v0.9.0
+          image: quay.io/ukhomeofficedigital/elasticsearch:6.8.1-1
           imagePullPolicy: Always
           resources:
             limits:
@@ -32,8 +32,6 @@ spec:
             - name: NODE_MASTER
               value: "true"
             - name: NODE_DATA
-              value: "false"
-            - name: HTTP_ENABLE
               value: "false"
             - name: ES_INDEX_AUTO_EXPAND_REPLICAS
               value: "1-3"
