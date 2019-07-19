@@ -29,6 +29,7 @@ The following environment variables are REMOVED:
 * `HTTP_ENABLE`
 * `ENABLE_TRANSPORT_SSL`
 * `THREAD_POOL_BULK_QUEUE_SIZE`
+* `XPACK_SECURITY_AUDIT_INDEX_EVENTS_EXCLUDE`
 
 The following environment variables are ADDED:
 
