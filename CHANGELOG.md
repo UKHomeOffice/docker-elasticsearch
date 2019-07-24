@@ -18,6 +18,7 @@ https://www.elastic.co/guide/en/elastic-stack-overview/6.8/built-in-users.html
 
 ### Changes
 
+* Upgrades base image to fedora:30
 * Upgrades Elasticsearch to version 6.8.1: https://www.elastic.co/guide/en/elasticsearch/reference/6.8/es-release-notes.html
 * Removes `search-guard-ssl` plugin and generic `xpack.ssl.` settings - replaced by `xpack.security.transport.ssl` and `xpack.security.http.ssl`.
 * Adds `repository-s3` plugin as no longer included in the base set.

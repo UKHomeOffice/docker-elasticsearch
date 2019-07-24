@@ -1,4 +1,4 @@
-FROM fedora:25
+FROM fedora:30
 
 RUN dnf upgrade -y -q; dnf clean all
 RUN dnf install -y -q java-headless tar wget openssl apr hostname; dnf clean all
