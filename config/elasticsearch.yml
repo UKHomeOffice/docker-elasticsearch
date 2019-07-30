@@ -34,7 +34,6 @@ indices.memory.index_buffer_size: ${INDEX_BUFFER_SIZE}
 xpack.security.enabled: ${XPACK_SECURITY_ENABLE}
 xpack.security.audit.enabled: ${XPACK_SECURITY_AUDIT_ENABLE}
 xpack.security.audit.logfile.events.exclude: ${XPACK_SECURITY_AUDIT_LOGFILE_EVENTS_EXCLUDE}
-xpack.security.audit.outputs: ${XPACK_SECURITY_AUDIT_OUTPUT}
 
 xpack.security.transport.ssl.enabled: ${XPACK_SECURITY_TRANSPORT_SSL_ENABLE}
 xpack.security.transport.ssl.verification_mode: ${XPACK_SSL_VERIFY_MODE}
