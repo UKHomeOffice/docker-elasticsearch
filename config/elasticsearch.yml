@@ -18,6 +18,7 @@ network.host: 0.0.0.0
 
 http.compression: true
 http.bind_host: ${HTTP_BIND_HOST}
+http.max_content_length:  ${HTTP_MAX_CONTENT_LENGTH}
 
 s3.client.default.endpoint: ${CLOUD_AWS_S3_ENDPOINT}
 
